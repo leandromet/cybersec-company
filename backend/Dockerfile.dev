@@ -1,0 +1,26 @@
+# Development Dockerfile for NestJS Backend
+FROM node:18-alpine
+
+WORKDIR /app
+
+
+# Copy package files
+COPY package.json yarn.lock ./
+
+# Install dependencies (will create yarn.lock if it doesn't exist)
+RUN apk add --no-cache openssl
+RUN yarn install
+
+# Copy prisma schema
+COPY prisma ./prisma/
+
+# Generate Prisma client
+RUN yarn prisma generate
+
+# Copy source code
+COPY . .
+
+EXPOSE 5001
+
+# Start in development mode with hot reload
+CMD ["yarn", "start:dev"]

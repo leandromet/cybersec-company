@@ -1,0 +1,165 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(CLIENT)
+  company   String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  contacts  Contact[]
+  assessments SecurityAssessment[]
+
+  @@map("users")
+}
+
+model Contact {
+  id        String      @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  subject   String
+  message   String
+  status    ContactStatus @default(NEW)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  // Relations
+  userId    String?
+  user      User?       @relation(fields: [userId], references: [id])
+
+  @@map("contacts")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    ServiceCategory
+  price       Decimal?
+  duration    String?
+  features    String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  assessments SecurityAssessment[]
+
+  @@map("services")
+}
+
+model SecurityAssessment {
+  id           String           @id @default(cuid())
+  companyName  String
+  industry     String
+  employeeCount Int
+  currentSecurity Json
+  recommendations Json
+  riskLevel    RiskLevel
+  status       AssessmentStatus @default(PENDING)
+  scheduledDate DateTime?
+  completedDate DateTime?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  // Relations
+  userId       String
+  user         User             @relation(fields: [userId], references: [id])
+  serviceId    String
+  service      Service          @relation(fields: [serviceId], references: [id])
+
+  @@map("security_assessments")
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String?
+  coverImage  String?
+  category    BlogCategory
+  tags        String[]
+  isPublished Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  company   String
+  position  String?
+  content   String
+  rating    Int      @default(5)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+enum UserRole {
+  CLIENT
+  ADMIN
+  STAFF
+}
+
+enum ContactStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum ServiceCategory {
+  ASSESSMENT
+  CONSULTING
+  TRAINING
+  MONITORING
+  COMPLIANCE
+  INCIDENT_RESPONSE
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AssessmentStatus {
+  PENDING
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum BlogCategory {
+  SECURITY_TIPS
+  THREAT_ALERTS
+  COMPLIANCE
+  CASE_STUDIES
+  COMPANY_NEWS
+}
