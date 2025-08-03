@@ -45,9 +45,6 @@ const Services = () => {
   const [selections, setSelections] = useState<{ [nodeId: string]: string }>({});
   const [finalSolution, setFinalSolution] = useState<any>(null);
 
-  // Debug state changes
-  console.log('Current state:', { expandedService, currentNode, selectionsCount: Object.keys(selections).length, hasFinalSolution: !!finalSolution });
-
   const services: Service[] = [
     {
       id: 'it-security',
@@ -544,20 +541,11 @@ const Services = () => {
   };
 
   const handleServiceClick = (serviceId: string) => {
-    console.log('Service clicked:', serviceId);
-    console.log('Simulator data exists:', !!simulatorData[serviceId]);
-    console.log('Available simulators:', Object.keys(simulatorData));
-    
     if (simulatorData[serviceId]) {
-      console.log('Setting expanded service to:', serviceId);
       setExpandedService(serviceId);
       setCurrentNode(simulatorData[serviceId].startNode);
       setSelections({});
       setFinalSolution(null);
-    } else {
-      console.log('No simulator found for:', serviceId);
-      // For services without simulators, show a simple message
-      alert(`Interactive simulator for ${serviceId} coming soon! Please contact us for more information.`);
     }
   };
 
@@ -581,21 +569,14 @@ const Services = () => {
   };
 
   const renderSimulator = () => {
-    console.log('renderSimulator called, expandedService:', expandedService);
-    
-    if (!expandedService || !simulatorData[expandedService]) {
-      console.log('Not rendering simulator - no expanded service or simulator data');
-      return null;
-    }
+    if (!expandedService || !simulatorData[expandedService]) return null;
 
     const simulator = simulatorData[expandedService];
     const currentNodeData = currentNode ? simulator.nodes[currentNode] : null;
-    
-    console.log('Rendering simulator for:', expandedService, 'currentNode:', currentNode);
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" style={{ zIndex: 9999 }}>
-        <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-8">
             {/* Header */}
             <div className="flex justify-between items-start mb-8">
@@ -763,14 +744,8 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 group cursor-pointer"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Card clicked!', service.id);
-                handleServiceClick(service.id);
-              }}
-              style={{ userSelect: 'none' }}
+              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 group hover:-translate-y-2 cursor-pointer"
+              onClick={() => handleServiceClick(service.id)}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl">{service.icon}</span>
@@ -801,20 +776,9 @@ const Services = () => {
               </div>
 
               <div className="text-center">
-                <div className="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl text-sm font-medium mb-4">
+                <div className="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl text-sm font-medium">
                   Click to find your perfect solution →
                 </div>
-                <button 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Button clicked!', service.id);
-                    handleServiceClick(service.id);
-                  }}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition-colors"
-                >
-                  Start Simulator
-                </button>
               </div>
             </div>
           ))}
