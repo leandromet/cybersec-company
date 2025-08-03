@@ -405,7 +405,144 @@ const SimulatorPanel: React.FC<{
       description: 'Find the perfect security solution for your business type and size.',
       startNode: 'business-type',
       nodes: {
-        // ...existing nodes...
+        'business-type': {
+          id: 'business-type',
+          question: 'What type of business do you operate?',
+          options: [
+            {
+              label: 'Home Office / Freelancer',
+              value: 'home-office',
+              nextNode: 'home-office-size'
+            },
+            {
+              label: 'Retail Store / Shop',
+              value: 'retail-store',
+              nextNode: 'retail-size'
+            },
+            {
+              label: 'Office Building / Corporate',
+              value: 'office-building',
+              nextNode: 'office-size'
+            },
+            {
+              label: 'Manufacturing / Industrial',
+              value: 'manufacturing',
+              nextNode: 'manufacturing-size'
+            }
+          ]
+        },
+        'home-office-size': {
+          id: 'home-office-size',
+          question: 'How many devices need protection?',
+          options: [
+            {
+              label: '1-3 devices (Basic Setup)',
+              value: 'basic',
+              solution: {
+                title: 'Home Office Basic Security',
+                description: 'Essential protection for small home offices with basic firewall, antivirus, and backup.',
+                features: ['Basic Firewall', 'Antivirus Protection', 'Cloud Backup', 'Email Support'],
+                price: '$99/month',
+                timeline: '1 week setup'
+              }
+            },
+            {
+              label: '4-10 devices (Professional Setup)',
+              value: 'professional',
+              solution: {
+                title: 'Home Office Professional Security',
+                description: 'Comprehensive security suite for professional home offices with advanced monitoring.',
+                features: ['Advanced Firewall', 'Endpoint Protection', 'VPN Access', 'Real-time Monitoring', 'Priority Support'],
+                price: '$199/month',
+                timeline: '1-2 weeks setup'
+              }
+            }
+          ]
+        },
+        'retail-size': {
+          id: 'retail-size',
+          question: 'What is your store size?',
+          options: [
+            {
+              label: 'Small Store (1-5 employees)',
+              value: 'small',
+              solution: {
+                title: 'Small Retail Security Package',
+                description: 'Complete security solution for small retail operations with POS protection.',
+                features: ['POS Security', 'Network Protection', 'Customer Data Encryption', 'Compliance Support'],
+                price: '$249/month',
+                timeline: '1-2 weeks'
+              }
+            },
+            {
+              label: 'Medium Store (6-20 employees)',
+              value: 'medium',
+              solution: {
+                title: 'Medium Retail Security Suite',
+                description: 'Advanced security with customer data protection and payment processing security.',
+                features: ['Advanced POS Security', 'Multi-location Support', 'Payment Compliance', 'Staff Access Control', '24/7 Monitoring'],
+                price: '$499/month',
+                timeline: '2-3 weeks'
+              }
+            }
+          ]
+        },
+        'office-size': {
+          id: 'office-size',
+          question: 'How many employees do you have?',
+          options: [
+            {
+              label: '10-50 employees',
+              value: 'small-office',
+              solution: {
+                title: 'Small Business Enterprise Security',
+                description: 'Enterprise-grade security for growing businesses with comprehensive threat protection.',
+                features: ['Enterprise Firewall', 'Email Security', 'Employee Training', 'Incident Response', 'Compliance Management'],
+                price: '$799/month',
+                timeline: '2-4 weeks'
+              }
+            },
+            {
+              label: '50+ employees',
+              value: 'large-office',
+              solution: {
+                title: 'Enterprise Security Platform',
+                description: 'Full enterprise security infrastructure with advanced threat detection and response.',
+                features: ['Advanced Threat Detection', 'SIEM Integration', 'Zero Trust Architecture', 'Dedicated Security Team', 'Custom Compliance'],
+                price: '$1,499/month',
+                timeline: '4-8 weeks'
+              }
+            }
+          ]
+        },
+        'manufacturing-size': {
+          id: 'manufacturing-size',
+          question: 'What is your facility size?',
+          options: [
+            {
+              label: 'Small Facility (up to 25 employees)',
+              value: 'small-manufacturing',
+              solution: {
+                title: 'Industrial Security Essentials',
+                description: 'Specialized security for manufacturing with OT/IT convergence protection.',
+                features: ['OT/IT Security', 'Equipment Monitoring', 'Access Control', 'Safety Compliance', 'Remote Monitoring'],
+                price: '$899/month',
+                timeline: '3-6 weeks'
+              }
+            },
+            {
+              label: 'Large Facility (25+ employees)',
+              value: 'large-manufacturing',
+              solution: {
+                title: 'Enterprise Industrial Security',
+                description: 'Complete industrial security platform with advanced OT protection and compliance.',
+                features: ['Advanced OT Protection', 'Predictive Maintenance', 'Safety Integration', 'Supply Chain Security', 'Dedicated Support'],
+                price: '$2,499/month',
+                timeline: '6-12 weeks'
+              }
+            }
+          ]
+        }
       }
     },
     'ai-integration': {
@@ -413,7 +550,144 @@ const SimulatorPanel: React.FC<{
       description: 'Discover the perfect AI integration based on your business goals.',
       startNode: 'ai-goal',
       nodes: {
-        // ...existing nodes...
+        'ai-goal': {
+          id: 'ai-goal',
+          question: 'What is your primary AI integration goal?',
+          options: [
+            {
+              label: 'Customer Service Automation',
+              value: 'customer-service',
+              nextNode: 'customer-service-volume'
+            },
+            {
+              label: 'Content Creation & Marketing',
+              value: 'content-creation',
+              nextNode: 'content-volume'
+            },
+            {
+              label: 'Data Analysis & Insights',
+              value: 'data-analysis',
+              nextNode: 'data-complexity'
+            },
+            {
+              label: 'Process Automation',
+              value: 'process-automation',
+              nextNode: 'process-scope'
+            }
+          ]
+        },
+        'customer-service-volume': {
+          id: 'customer-service-volume',
+          question: 'What is your customer interaction volume?',
+          options: [
+            {
+              label: 'Low Volume (up to 100 queries/day)',
+              value: 'low-volume',
+              solution: {
+                title: 'Basic AI Customer Service',
+                description: 'Simple chatbot integration for basic customer inquiries and support.',
+                features: ['Basic Chatbot', 'FAQ Automation', 'Email Integration', 'Simple Analytics'],
+                price: '$149/month',
+                timeline: '1-2 weeks'
+              }
+            },
+            {
+              label: 'High Volume (100+ queries/day)',
+              value: 'high-volume',
+              solution: {
+                title: 'Advanced AI Customer Platform',
+                description: 'Sophisticated AI system with natural language processing and multi-channel support.',
+                features: ['Advanced NLP', 'Multi-channel Support', 'Sentiment Analysis', 'Live Agent Handoff', 'Advanced Analytics'],
+                price: '$399/month',
+                timeline: '3-4 weeks'
+              }
+            }
+          ]
+        },
+        'content-volume': {
+          id: 'content-volume',
+          question: 'How much content do you need to create?',
+          options: [
+            {
+              label: 'Basic Content Needs',
+              value: 'basic-content',
+              solution: {
+                title: 'AI Content Assistant',
+                description: 'AI-powered content creation tools for social media, blogs, and marketing materials.',
+                features: ['Content Generation', 'Social Media Automation', 'Blog Writing', 'Image Creation'],
+                price: '$199/month',
+                timeline: '1-3 weeks'
+              }
+            },
+            {
+              label: 'High-Volume Content Production',
+              value: 'high-content',
+              solution: {
+                title: 'Enterprise Content Platform',
+                description: 'Complete AI content ecosystem with brand consistency and workflow automation.',
+                features: ['Brand-Consistent Content', 'Workflow Automation', 'Multi-format Creation', 'Content Calendar', 'Team Collaboration'],
+                price: '$599/month',
+                timeline: '3-5 weeks'
+              }
+            }
+          ]
+        },
+        'data-complexity': {
+          id: 'data-complexity',
+          question: 'How complex is your data analysis needs?',
+          options: [
+            {
+              label: 'Basic Reporting & Insights',
+              value: 'basic-data',
+              solution: {
+                title: 'AI Analytics Starter',
+                description: 'Automated reporting and basic predictive analytics for business insights.',
+                features: ['Automated Reports', 'Trend Analysis', 'Basic Predictions', 'Data Visualization'],
+                price: '$299/month',
+                timeline: '2-4 weeks'
+              }
+            },
+            {
+              label: 'Advanced Analytics & ML',
+              value: 'advanced-data',
+              solution: {
+                title: 'Enterprise AI Analytics',
+                description: 'Advanced machine learning models for complex data analysis and predictions.',
+                features: ['Custom ML Models', 'Predictive Analytics', 'Real-time Processing', 'Advanced Visualizations', 'API Integration'],
+                price: '$899/month',
+                timeline: '4-8 weeks'
+              }
+            }
+          ]
+        },
+        'process-scope': {
+          id: 'process-scope',
+          question: 'What processes need automation?',
+          options: [
+            {
+              label: 'Single Process/Department',
+              value: 'single-process',
+              solution: {
+                title: 'Focused Process Automation',
+                description: 'AI automation for specific business processes with workflow optimization.',
+                features: ['Workflow Automation', 'Document Processing', 'Task Scheduling', 'Performance Monitoring'],
+                price: '$349/month',
+                timeline: '2-5 weeks'
+              }
+            },
+            {
+              label: 'Multiple Processes/Enterprise-wide',
+              value: 'enterprise-process',
+              solution: {
+                title: 'Enterprise Automation Platform',
+                description: 'Comprehensive AI automation across multiple departments and processes.',
+                features: ['Cross-department Automation', 'Advanced AI Models', 'Integration Hub', 'Scalable Architecture', 'Custom Development'],
+                price: '$1,299/month',
+                timeline: '6-12 weeks'
+              }
+            }
+          ]
+        }
       }
     },
     'gis-mapping': {
@@ -421,7 +695,144 @@ const SimulatorPanel: React.FC<{
       description: 'Find the ideal mapping solution for your geographic data needs.',
       startNode: 'mapping-purpose',
       nodes: {
-        // ...existing nodes...
+        'mapping-purpose': {
+          id: 'mapping-purpose',
+          question: 'What is your primary mapping purpose?',
+          options: [
+            {
+              label: 'Business Location Analysis',
+              value: 'business-analysis',
+              nextNode: 'business-scope'
+            },
+            {
+              label: 'Asset & Resource Management',
+              value: 'asset-management',
+              nextNode: 'asset-scope'
+            },
+            {
+              label: 'Customer/Market Analysis',
+              value: 'market-analysis',
+              nextNode: 'market-scope'
+            },
+            {
+              label: 'Environmental/Scientific Data',
+              value: 'environmental',
+              nextNode: 'environmental-scope'
+            }
+          ]
+        },
+        'business-scope': {
+          id: 'business-scope',
+          question: 'What is your geographic scope?',
+          options: [
+            {
+              label: 'Local/Regional (single city/state)',
+              value: 'local',
+              solution: {
+                title: 'Local Business Mapping',
+                description: 'Targeted mapping solution for local business analysis and site selection.',
+                features: ['Location Intelligence', 'Site Analysis', 'Competitor Mapping', 'Demographics Integration'],
+                price: '$249/month',
+                timeline: '2-3 weeks'
+              }
+            },
+            {
+              label: 'National/International',
+              value: 'national',
+              solution: {
+                title: 'Enterprise Location Platform',
+                description: 'Comprehensive mapping platform for multi-location business operations.',
+                features: ['Multi-location Management', 'Advanced Analytics', 'Real-time Data', 'Custom Dashboards', 'API Access'],
+                price: '$699/month',
+                timeline: '4-6 weeks'
+              }
+            }
+          ]
+        },
+        'asset-scope': {
+          id: 'asset-scope',
+          question: 'What type of assets need tracking?',
+          options: [
+            {
+              label: 'Infrastructure/Equipment',
+              value: 'infrastructure',
+              solution: {
+                title: 'Asset Tracking & Management',
+                description: 'Complete asset management with real-time tracking and maintenance scheduling.',
+                features: ['Real-time Tracking', 'Maintenance Scheduling', 'Condition Monitoring', 'Mobile Access'],
+                price: '$399/month',
+                timeline: '3-5 weeks'
+              }
+            },
+            {
+              label: 'Fleet/Vehicle Management',
+              value: 'fleet',
+              solution: {
+                title: 'Fleet Management Platform',
+                description: 'Advanced fleet tracking with route optimization and driver management.',
+                features: ['GPS Tracking', 'Route Optimization', 'Driver Monitoring', 'Fuel Management', 'Reporting'],
+                price: '$599/month',
+                timeline: '3-4 weeks'
+              }
+            }
+          ]
+        },
+        'market-scope': {
+          id: 'market-scope',
+          question: 'What level of market analysis do you need?',
+          options: [
+            {
+              label: 'Basic Customer Mapping',
+              value: 'basic-market',
+              solution: {
+                title: 'Customer Analytics Mapping',
+                description: 'Customer location analysis with demographic and behavioral insights.',
+                features: ['Customer Mapping', 'Demographic Analysis', 'Market Segmentation', 'Sales Territory Planning'],
+                price: '$349/month',
+                timeline: '2-4 weeks'
+              }
+            },
+            {
+              label: 'Advanced Market Intelligence',
+              value: 'advanced-market',
+              solution: {
+                title: 'Market Intelligence Platform',
+                description: 'Comprehensive market analysis with predictive modeling and competitive intelligence.',
+                features: ['Predictive Modeling', 'Competitive Analysis', 'Market Forecasting', 'Risk Assessment', 'Custom Reports'],
+                price: '$899/month',
+                timeline: '5-8 weeks'
+              }
+            }
+          ]
+        },
+        'environmental-scope': {
+          id: 'environmental-scope',
+          question: 'What type of environmental data?',
+          options: [
+            {
+              label: 'Basic Environmental Monitoring',
+              value: 'basic-environmental',
+              solution: {
+                title: 'Environmental Data Platform',
+                description: 'Environmental monitoring and analysis with satellite data integration.',
+                features: ['Satellite Data', 'Environmental Monitoring', 'Change Detection', 'Data Visualization'],
+                price: '$499/month',
+                timeline: '4-6 weeks'
+              }
+            },
+            {
+              label: 'Advanced Scientific Analysis',
+              value: 'advanced-environmental',
+              solution: {
+                title: 'Scientific GIS Platform',
+                description: 'Advanced scientific analysis with custom modeling and research tools.',
+                features: ['Custom Modeling', 'Scientific Analysis', 'Research Tools', 'Data Integration', 'Collaboration Features'],
+                price: '$1,199/month',
+                timeline: '6-10 weeks'
+              }
+            }
+          ]
+        }
       }
     },
     'custom-development': {
@@ -877,7 +1288,17 @@ const SimulatorPanel: React.FC<{
                   key={service.id}
                   service={service}
                   isActive={expandedService === service.id}
-                  onClick={() => handleServiceClick(service.id)}
+                  onClick={() => {
+                    // If already expanded, collapse it; otherwise, expand and show simulator
+                    if (expandedService === service.id) {
+                      setExpandedService(null);
+                      setCurrentNode('');
+                      setSelections({});
+                      setFinalSolution(null);
+                    } else {
+                      handleServiceClick(service.id);
+                    }
+                  }}
                 />
               ))}
             </div>
