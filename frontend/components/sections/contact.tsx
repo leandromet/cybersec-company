@@ -45,12 +45,12 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+    <section id="contact" className="relative py-24 bg-white text-black overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(139,92,246,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(56,189,248,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(56,189,248,0.03)_1px,transparent_1px),linear-gradient(rgba(56,189,248,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(99,102,241,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(99,102,241,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
       </div>
 
       {/* Floating Tech Elements */}
@@ -115,13 +115,13 @@ export const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="Agent Identification" 
                       required
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-cyan-400 placeholder-gray-400 text-white ${
-                        focusedField === 'name' ? 'border-cyan-400 shadow-lg shadow-cyan-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 placeholder-neutral-500 text-black ${
+                        focusedField === 'name' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
                     />
-                    <div className="absolute right-4 top-4 text-cyan-400 opacity-60">👤</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">👤</div>
                   </div>
 
                   {/* Email Field */}
@@ -133,13 +133,13 @@ export const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="Secure Communication Channel" 
                       required
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-purple-400 placeholder-gray-400 text-white ${
-                        focusedField === 'email' ? 'border-purple-400 shadow-lg shadow-purple-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 placeholder-neutral-500 text-black ${
+                        focusedField === 'email' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
                     />
-                    <div className="absolute right-4 top-4 text-purple-400 opacity-60">📧</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">📧</div>
                   </div>
 
                   {/* Company Field */}
@@ -150,13 +150,13 @@ export const Contact: React.FC = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Organization Code" 
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-blue-400 placeholder-gray-400 text-white ${
-                        focusedField === 'company' ? 'border-blue-400 shadow-lg shadow-blue-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 placeholder-neutral-500 text-black ${
+                        focusedField === 'company' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('company')}
                       onBlur={() => setFocusedField(null)}
                     />
-                    <div className="absolute right-4 top-4 text-blue-400 opacity-60">🏢</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">🏢</div>
                   </div>
 
                   {/* Phone Field */}
@@ -167,13 +167,13 @@ export const Contact: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Emergency Contact Frequency" 
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-green-400 placeholder-gray-400 text-white ${
-                        focusedField === 'phone' ? 'border-green-400 shadow-lg shadow-green-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 placeholder-neutral-500 text-black ${
+                        focusedField === 'phone' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('phone')}
                       onBlur={() => setFocusedField(null)}
                     />
-                    <div className="absolute right-4 top-4 text-green-400 opacity-60">📱</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">📱</div>
                   </div>
 
                   {/* Service Selection */}
@@ -182,21 +182,21 @@ export const Contact: React.FC = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-orange-400 text-white ${
-                        focusedField === 'service' ? 'border-orange-400 shadow-lg shadow-orange-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 text-black ${
+                        focusedField === 'service' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('service')}
                       onBlur={() => setFocusedField(null)}
                     >
-                      <option value="" className="bg-slate-800">Select Protection Protocol</option>
-                      <option value="ai-threat" className="bg-slate-800">AI Threat Detection</option>
-                      <option value="quantum-assessment" className="bg-slate-800">Quantum Vulnerability Assessment</option>
-                      <option value="neural-monitoring" className="bg-slate-800">Neural Network Monitoring</option>
-                      <option value="compliance-matrix" className="bg-slate-800">Regulatory Compliance Matrix</option>
-                      <option value="incident-response" className="bg-slate-800">Incident Response Protocol</option>
-                      <option value="cyber-training" className="bg-slate-800">Cyber Warfare Training</option>
+                      <option value="" className="bg-white">Select Protection Protocol</option>
+                      <option value="ai-threat" className="bg-white">AI Threat Detection</option>
+                      <option value="quantum-assessment" className="bg-white">Quantum Vulnerability Assessment</option>
+                      <option value="neural-monitoring" className="bg-white">Neural Network Monitoring</option>
+                      <option value="compliance-matrix" className="bg-white">Regulatory Compliance Matrix</option>
+                      <option value="incident-response" className="bg-white">Incident Response Protocol</option>
+                      <option value="cyber-training" className="bg-white">Cyber Warfare Training</option>
                     </select>
-                    <div className="absolute right-4 top-4 text-orange-400 opacity-60">⚙️</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">⚙️</div>
                   </div>
 
                   {/* Message Field */}
@@ -207,20 +207,20 @@ export const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="Threat Assessment Details & Security Requirements..."
                       rows={4}
-                      className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-pink-400 placeholder-gray-400 text-white resize-none ${
-                        focusedField === 'message' ? 'border-pink-400 shadow-lg shadow-pink-400/25' : ''
+                      className={`w-full bg-white border border-neutral-200 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-neutral-50 focus:border-indigo-400 placeholder-neutral-500 text-black resize-none ${
+                        focusedField === 'message' ? 'border-indigo-400 shadow-lg shadow-indigo-400/25' : ''
                       }`}
                       onFocus={() => setFocusedField('message')}
                       onBlur={() => setFocusedField(null)}
                     />
-                    <div className="absolute right-4 top-4 text-pink-400 opacity-60">💬</div>
+                    <div className="absolute right-4 top-4 text-indigo-400 opacity-60">💬</div>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative w-full overflow-hidden bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group relative w-full overflow-hidden bg-indigo-600 text-white font-bold py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative flex items-center justify-center space-x-3">
@@ -260,7 +260,7 @@ export const Contact: React.FC = () => {
                         <span className="text-xl">📍</span>
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Vernon Operations Base</div>
+                        <div className="text-black font-semibold">Vernon Operations Base</div>
                         <div className="text-gray-400">British Columbia, Canada</div>
                       </div>
                     </div>

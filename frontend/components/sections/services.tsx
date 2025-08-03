@@ -101,50 +101,28 @@ const Services: React.FC = () => {
     <section 
       ref={sectionRef}
       id="services" 
-      className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden"
+      className="relative py-24 bg-white text-black overflow-hidden"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.1),transparent_70%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(139,92,246,0.05)_25%,transparent_25%),linear-gradient(-45deg,rgba(139,92,246,0.05)_25%,transparent_25%)] bg-[size:60px_60px]"></div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${4 + Math.random() * 6}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          ></div>
-        ))}
+      {/* Clean Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1),transparent_70%)]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-cyan-500/30 rounded-full px-6 py-3 mb-8">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-            <span className="text-cyan-300 font-medium text-sm tracking-wider uppercase">Security Arsenal</span>
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+          <div className="inline-flex items-center space-x-2 bg-white border border-indigo-200 rounded-full px-6 py-3 mb-8 shadow-sm">
+            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+            <span className="text-indigo-700 font-medium text-sm tracking-wider uppercase">Security Arsenal</span>
+            <div className="w-2 h-2 bg-indigo-300 rounded-full animate-pulse"></div>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-black mb-6">
-            <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-              Advanced Protection
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Systems
-            </span>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-black">
+            <span className="block mb-2">Advanced Protection</span>
+            <span className="text-indigo-600">Systems</span>
           </h2>
           
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
             Cutting-edge cybersecurity solutions powered by artificial intelligence and quantum-resistant technologies
           </p>
         </div>
@@ -164,10 +142,10 @@ const Services: React.FC = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Service Card */}
-              <div className="relative h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="relative h-full bg-white border border-neutral-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:scale-105 hover:border-indigo-200 overflow-hidden shadow-sm">
                 
                 {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
                 
                 <div className="relative z-10">
                   {/* Icon */}
@@ -176,12 +154,12 @@ const Services: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold mb-4 text-black group-hover:text-indigo-600 transition-colors duration-300">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-neutral-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
@@ -196,8 +174,8 @@ const Services: React.FC = () => {
                             : 'opacity-70 translate-x-2'
                         }`}
                       >
-                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full"></div>
-                        <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                        <div className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full"></div>
+                        <span className="text-sm text-neutral-500 group-hover:text-neutral-700 transition-colors duration-300">
                           {feature}
                         </span>
                       </div>
@@ -210,9 +188,9 @@ const Services: React.FC = () => {
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-2'
                   }`}>
-                    <div className="flex items-center space-x-2 text-cyan-400 font-medium cursor-pointer">
+                    <div className="flex items-center space-x-2 text-indigo-600 font-medium cursor-pointer">
                       <span className="text-sm">Deploy System</span>
-                      <div className="w-4 h-4 border border-cyan-400 rounded-full flex items-center justify-center">
+                      <div className="w-4 h-4 border border-indigo-600 rounded-full flex items-center justify-center">
                         <span className="text-xs">→</span>
                       </div>
                     </div>
@@ -225,20 +203,17 @@ const Services: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-20">
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                Ready to Deploy Advanced Protection?
-              </span>
+          <div className="bg-white border border-neutral-200 rounded-3xl p-12 max-w-4xl mx-auto shadow-lg">
+            <h3 className="text-3xl font-bold mb-6 text-black">
+              Ready to Deploy Advanced Protection?
             </h3>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-neutral-600 mb-8">
               Connect with our cybersecurity specialists for a comprehensive security assessment
             </p>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative overflow-hidden bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/25"
+              className="group relative overflow-hidden bg-indigo-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-300 hover:scale-110 hover:shadow-xl hover:bg-indigo-700"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative flex items-center space-x-3">
                 <span>Initialize Security Protocol</span>
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
