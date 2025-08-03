@@ -81,12 +81,157 @@ export default function Home() {
     {
       id: 'about',
       label: 'About',
-      component: <About />
+      component: (
+        <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'white', padding: '80px 32px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+              <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'black', marginBottom: '24px', letterSpacing: '-0.02em' }}>
+                About Vernon CyberSec
+              </h2>
+              <div style={{ width: '80px', height: '2px', backgroundColor: '#4f46e5', margin: '0 auto 32px' }}></div>
+              <p style={{ fontSize: '20px', color: '#6b7280', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+                Leading cybersecurity experts protecting businesses across British Columbia with cutting-edge security solutions and unparalleled expertise.
+              </p>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', marginBottom: '80px' }}>
+              <div style={{ textAlign: 'center', padding: '40px', backgroundColor: '#f9fafb', borderRadius: '16px', border: '1px solid #e5e5e5' }}>
+                <div style={{ fontSize: '48px', marginBottom: '24px' }}>🛡️</div>
+                <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'black', marginBottom: '16px' }}>Expert Team</h3>
+                <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+                  Our certified security professionals bring decades of combined experience in enterprise cybersecurity, compliance, and threat management.
+                </p>
+              </div>
+              
+              <div style={{ textAlign: 'center', padding: '40px', backgroundColor: '#f9fafb', borderRadius: '16px', border: '1px solid #e5e5e5' }}>
+                <div style={{ fontSize: '48px', marginBottom: '24px' }}>🎯</div>
+                <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'black', marginBottom: '16px' }}>Local Focus</h3>
+                <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+                  Based in Vernon, BC, we understand the unique challenges facing Canadian businesses and provide tailored security solutions for local enterprises.
+                </p>
+              </div>
+              
+              <div style={{ textAlign: 'center', padding: '40px', backgroundColor: '#f9fafb', borderRadius: '16px', border: '1px solid #e5e5e5' }}>
+                <div style={{ fontSize: '48px', marginBottom: '24px' }}>⚡</div>
+                <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'black', marginBottom: '16px' }}>24/7 Support</h3>
+                <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+                  Round-the-clock monitoring and incident response ensures your business stays protected against evolving cyber threats at all times.
+                </p>
+              </div>
+            </div>
+            
+            <div style={{ backgroundColor: '#4f46e5', borderRadius: '24px', padding: '64px', textAlign: 'center', color: 'white' }}>
+              <h3 style={{ fontSize: '32px', fontWeight: '600', marginBottom: '24px', color: 'white' }}>Our Mission</h3>
+              <p style={{ fontSize: '20px', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto', color: '#e0e7ff' }}>
+                To provide world-class cybersecurity solutions that protect businesses while enabling growth and innovation. We believe security should empower, not hinder, your business objectives.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: 'services',
       label: 'Services',
-      component: <Services />
+      component: (
+        <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'white', padding: '80px 32px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+              <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'black', marginBottom: '24px', letterSpacing: '-0.02em' }}>
+                Comprehensive Security Services
+              </h2>
+              <div style={{ width: '80px', height: '2px', backgroundColor: '#4f46e5', margin: '0 auto 32px' }}></div>
+              <p style={{ fontSize: '20px', color: '#6b7280', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+                From vulnerability assessments to incident response, we offer complete cybersecurity solutions tailored to your business needs.
+              </p>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px' }}>
+              {[
+                {
+                  icon: '🔍',
+                  title: 'Security Assessments',
+                  description: 'Comprehensive evaluation of your current security posture with detailed recommendations for improvement.',
+                  features: ['Vulnerability Scanning', 'Penetration Testing', 'Risk Analysis', 'Compliance Review']
+                },
+                {
+                  icon: '🛡️',
+                  title: 'Managed Security',
+                  description: '24/7 monitoring and management of your security infrastructure by our expert team.',
+                  features: ['SIEM Management', 'Threat Monitoring', 'Incident Response', 'Security Updates']
+                },
+                {
+                  icon: '📋',
+                  title: 'Compliance Consulting',
+                  description: 'Expert guidance to achieve and maintain compliance with industry standards and regulations.',
+                  features: ['PIPEDA Compliance', 'ISO 27001', 'SOC 2', 'Industry Standards']
+                },
+                {
+                  icon: '🎓',
+                  title: 'Security Training',
+                  description: 'Comprehensive training programs to educate your team on cybersecurity best practices.',
+                  features: ['Phishing Awareness', 'Security Policies', 'Incident Response', 'Best Practices']
+                },
+                {
+                  icon: '🚨',
+                  title: 'Incident Response',
+                  description: 'Rapid response and recovery services to minimize the impact of security incidents.',
+                  features: ['24/7 Emergency Response', 'Forensic Analysis', 'Recovery Planning', 'Prevention Strategies']
+                },
+                {
+                  icon: '☁️',
+                  title: 'Cloud Security',
+                  description: 'Specialized security solutions for cloud environments and hybrid infrastructures.',
+                  features: ['Cloud Configuration', 'Access Management', 'Data Protection', 'Migration Security']
+                }
+              ].map((service, index) => (
+                <div key={index} style={{ 
+                  backgroundColor: 'white', 
+                  border: '1px solid #e5e5e5', 
+                  borderRadius: '16px', 
+                  padding: '32px',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLElement;
+                  target.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                  target.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLElement;
+                  target.style.boxShadow = 'none';
+                  target.style.transform = 'translateY(0)';
+                }}>
+                  <div style={{ fontSize: '48px', marginBottom: '24px' }}>{service.icon}</div>
+                  <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'black', marginBottom: '16px' }}>{service.title}</h3>
+                  <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: '24px' }}>{service.description}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        marginBottom: '8px',
+                        color: '#374151',
+                        fontSize: '14px'
+                      }}>
+                        <div style={{ 
+                          width: '6px', 
+                          height: '6px', 
+                          backgroundColor: '#4f46e5', 
+                          borderRadius: '50%', 
+                          marginRight: '12px' 
+                        }}></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: 'insights',
@@ -107,59 +252,75 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-black font-sans" style={{fontFamily: 'DM Sans, Inter, sans-serif'}}>
-      {/* Main Header with Full-Width Tab Navigation */}
-      <header className="sticky top-0 left-0 right-0 z-50 bg-white border-b border-neutral-200 shadow-sm">
-        <div className="w-full">
-          <div className="flex items-center h-20">
-            {/* Logo Section */}
-            <div className="flex items-center gap-3 px-8 py-4 bg-neutral-50 border-r border-neutral-200 min-w-fit">
-              <span className="font-black text-2xl tracking-tight text-black">Vernon</span>
-              <span className="font-black text-2xl tracking-tight text-indigo-600">CyberSec</span>
-            </div>
-            
-            {/* Full-Width Tab Navigation Bar */}
-            <nav className="flex-1 flex h-full bg-white">
-              <div className="flex flex-1 h-full w-full">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 flex items-center justify-center cursor-pointer select-none relative
-                  font-semibold text-sm transition-all duration-200 h-full
-                  min-w-0 px-8 py-0 border-r border-neutral-200 last:border-r-0 rounded-lg
-                  ${activeTab === tab.id 
-                    ? 'bg-indigo-600 text-white shadow hover:bg-indigo-700'
-                    : 'text-neutral-600 bg-white hover:bg-indigo-600 hover:text-white shadow-sm'
-                  }`}
-                  style={{ fontFamily: 'inherit' }}
-                  role="tab"
-                  aria-selected={activeTab === tab.id}
-                >
-                  <span className="truncate relative z-10 py-4 flex items-center gap-2">
-                  {tab.label}
-                  {activeTab === tab.id && (
-                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-7-7 7 7-7 7"/>
-                    </svg>
-                  )}
-                  </span>
-                </button>
-              ))}
-              </div>
-            </nav>
-            
-            {/* CTA Button Section */}
-            <div className="px-8 py-4 bg-neutral-50 border-l border-neutral-200 min-w-fit">
-              <button 
-                onClick={() => setActiveTab('contact')}
-                className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold text-sm shadow hover:bg-indigo-700 transition-colors duration-200"
+      {/* Main Header with Tab Navigation */}
+      <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'white', borderBottom: '1px solid #e5e5e5' }}>
+        <div style={{ display: 'flex', height: '80px' }}>
+          {/* Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', padding: '0 32px', backgroundColor: '#f9fafb', borderRight: '1px solid #e5e5e5' }}>
+            <span style={{ fontWeight: '900', fontSize: '24px', color: 'black' }}>Vernon</span>
+            <span style={{ fontWeight: '900', fontSize: '24px', color: '#4f46e5', marginLeft: '4px' }}>CyberSec</span>
+          </div>
+          
+          {/* Tab Navigation */}
+          <div style={{ flex: 1, display: 'flex' }}>
+            {tabs.map((tab) => (
+              <div
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '80px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  borderRight: '1px solid #e5e5e5',
+                  borderBottom: activeTab === tab.id ? '2px solid #4f46e5' : '2px solid transparent',
+                  color: activeTab === tab.id ? '#4f46e5' : '#6b7280',
+                  backgroundColor: activeTab === tab.id ? 'white' : 'transparent',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab.id) {
+                    const target = e.target as HTMLElement;
+                    target.style.backgroundColor = '#f9fafb';
+                    target.style.color = '#374151';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab.id) {
+                    const target = e.target as HTMLElement;
+                    target.style.backgroundColor = 'transparent';
+                    target.style.color = '#6b7280';
+                  }
+                }}
               >
-                <span>Get Started</span>
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-7-7 7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
+                {tab.label}
+              </div>
+            ))}
+          </div>
+          
+          {/* CTA */}
+          <div style={{ display: 'flex', alignItems: 'center', padding: '0 32px', backgroundColor: '#f9fafb', borderLeft: '1px solid #e5e5e5' }}>
+            <button 
+              onClick={() => setActiveTab('contact')}
+              style={{ 
+                backgroundColor: '#4f46e5', 
+                color: 'white', 
+                padding: '12px 24px', 
+                borderRadius: '8px', 
+                fontSize: '14px', 
+                fontWeight: '600',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              Get Started
+            </button>
           </div>
         </div>
       </header>
