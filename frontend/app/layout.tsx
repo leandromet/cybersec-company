@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Vernon Cyber Security Solutions - Protecting BC Businesses',
-  description: 'Professional cybersecurity services for small and medium businesses in Vernon, BC. Expert security assessments, compliance consulting, and incident response.',
-  keywords: 'cybersecurity, Vernon BC, small business security, compliance, cyber safety, data protection',
+  description: 'Professional cybersecurity, AI and Maps services for small and medium businesses in Vernon, BC. Expert security assessments, compliance consulting, and incident response.',
+  keywords: 'cybersecurity, GIS, Maps, GPT, Claude, AI integration, Vernon BC, small business security, compliance, cyber safety, data protection',
   authors: [{ name: 'Vernon Cyber Security Solutions' }],
   openGraph: {
     title: 'Vernon Cyber Security Solutions',
-    description: 'Protecting small and medium businesses in Vernon, BC with expert cybersecurity services.',
+    description: 'Protecting and empowering small and medium businesses in Vernon, BC with expert cybersecurity services.',
     url: 'https://vernoncybersec.ca',
     siteName: 'Vernon Cyber Security Solutions',
     locale: 'en_CA',
@@ -31,11 +31,10 @@ export default function RootLayout({
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-              Vernon Cyber Security Solutions
+              Vernon Cyber TechSolutions
             </h1>
             <p className="text-lg text-center mb-12">
-              Professional cybersecurity services for small and medium businesses in Vernon, BC. Expert security assessments, compliance consulting, and incident response.
-            </p>
+Complete technology solutions for home offices to medium businesses. Security, AI APIs, Interactive Maps, and custom development tailored to your needs.            </p>
           </div>
         </div>
         <div className="container mx-auto px-4">
