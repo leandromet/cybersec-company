@@ -58,96 +58,99 @@ const ServiceCard: React.FC<{
   isActive: boolean;
   onClick: () => void;
 }> = ({ service, isActive, onClick }) => {
-  const gradientClass = categoryColors[service.category];
-  
   return (
     <div
       onClick={onClick}
       className={`
-        group relative overflow-hidden rounded-2xl p-6 cursor-pointer
-        transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl
-        ${isActive 
-          ? 'bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300 shadow-xl' 
-          : 'bg-white border border-gray-200 hover:border-indigo-200 shadow-lg hover:shadow-xl'
+        group relative cursor-pointer rounded-3xl border-2 transition-all duration-300
+        overflow-hidden shadow-lg hover:shadow-2xl
+        ${isActive
+          ? 'border-indigo-500 bg-gradient-to-br from-indigo-50 to-purple-100 scale-105'
+          : 'border-gray-200 bg-white hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-purple-50'
         }
       `}
+      style={{ minHeight: 340 }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-transparent"></div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div className={`
-            w-14 h-14 rounded-xl flex items-center justify-center
-            bg-gradient-to-br ${gradientClass} shadow-lg
-            group-hover:scale-110 transition-transform duration-300
-          `}>
-            <span className="text-2xl filter drop-shadow-sm">{service.icon}</span>
-          </div>
-          
-          <div className={`
-            px-3 py-1 rounded-full text-xs font-semibold
-            ${isActive ? 'bg-indigo-100 text-indigo-700' : 'bg-gray-100 text-gray-600'}
-          `}>
-            {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
-          </div>
-        </div>
+      {/* Top Gradient Bar */}
+      <div className={`absolute top-0 left-0 w-full h-2 rounded-t-3xl ${isActive
+        ? 'bg-gradient-to-r from-indigo-500 to-purple-500'
+        : 'bg-gradient-to-r from-gray-100 to-gray-200'
+      }`} />
 
-        {/* Title & Description */}
-        <h3 className={`
-          text-xl font-bold mb-3 transition-colors duration-300
-          ${isActive ? 'text-indigo-700' : 'text-gray-900 group-hover:text-indigo-600'}
+      {/* Icon */}
+      <div className="flex justify-center items-center mt-8 mb-4">
+        <div className={`
+          w-16 h-16 rounded-2xl flex items-center justify-center text-4xl shadow-md
+          ${isActive
+            ? 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white'
+            : 'bg-gradient-to-br from-gray-100 to-gray-200 text-indigo-500 group-hover:bg-gradient-to-br group-hover:from-indigo-500 group-hover:to-purple-500 group-hover:text-white'
+          }
         `}>
-          {service.title}
-        </h3>
-        
-        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-          {service.description}
-        </p>
-
-        {/* Features */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2">
-            {service.features.slice(0, 3).map((feature, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 bg-gray-100 text-gray-700 rounded-md text-xs font-medium"
-              >
-                {feature}
-              </span>
-            ))}
-            {service.features.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded-md text-xs">
-                +{service.features.length - 3} more
-              </span>
-            )}
-          </div>
+          {service.icon}
         </div>
+      </div>
 
-        {/* Price & Timeline */}
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <div className="text-lg font-bold text-indigo-600">{service.price}</div>
-            <div className="text-xs text-gray-500">{service.timeline}</div>
-          </div>
-          
-          <button 
-            className={`
-              px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300
-              transform hover:scale-105 shadow-md hover:shadow-lg
-              ${isActive 
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white' 
-                : 'bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:from-indigo-600 hover:to-purple-600'
-              }
-            `}
+      {/* Title */}
+      <h3 className={`
+        text-xl font-bold mb-2 text-center transition-colors duration-300
+        ${isActive ? 'text-indigo-700' : 'text-gray-900 group-hover:text-indigo-600'}
+      `}>
+        {service.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-gray-500 text-center px-4 mb-4 text-sm min-h-[48px]">
+        {service.description}
+      </p>
+
+      {/* Features */}
+      <div className="flex flex-wrap gap-2 justify-center mb-4 px-2">
+        {service.features.slice(0, 3).map((feature, idx) => (
+          <span
+            key={idx}
+            className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200"
           >
-            {isActive ? 'Active' : 'Start Simulator'} →
-          </button>
-        </div>
+            {feature}
+          </span>
+        ))}
+        {service.features.length > 3 && (
+          <span className="px-3 py-1 bg-white text-gray-400 rounded-full text-xs border border-gray-200">
+            +{service.features.length - 3} more
+          </span>
+        )}
+      </div>
+
+      {/* Price & Timeline */}
+      <div className="flex justify-center items-center gap-4 mb-6">
+        <div className="text-lg font-bold text-indigo-600">{service.price}</div>
+        <div className="text-xs text-gray-500">{service.timeline}</div>
+      </div>
+
+      {/* Action Button */}
+      <button
+        className={`
+          w-[90%] mx-auto block py-3 rounded-xl text-sm font-semibold transition-all duration-300
+          shadow-md hover:shadow-lg mb-6
+          ${isActive
+            ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
+            : 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:from-indigo-600 hover:to-purple-600'
+          }
+        `}
+        tabIndex={-1}
+        type="button"
+      >
+        {isActive ? 'Simulator Active' : 'Run Solution Finder'} →
+      </button>
+
+      {/* Category Badge */}
+      <div className={`
+        absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold shadow
+        ${isActive
+          ? 'bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700'
+          : 'bg-white text-gray-600 border border-gray-200'
+        }
+      `}>
+        {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
       </div>
     </div>
   );
@@ -402,144 +405,7 @@ const SimulatorPanel: React.FC<{
       description: 'Find the perfect security solution for your business type and size.',
       startNode: 'business-type',
       nodes: {
-        'business-type': {
-          id: 'business-type',
-          question: 'What type of business do you operate?',
-          options: [
-            {
-              label: 'Home Office / Freelancer',
-              value: 'home-office',
-              nextNode: 'home-office-size'
-            },
-            {
-              label: 'Retail Store / Shop',
-              value: 'retail-store',
-              nextNode: 'retail-size'
-            },
-            {
-              label: 'Office Building / Corporate',
-              value: 'office-building',
-              nextNode: 'office-size'
-            },
-            {
-              label: 'Manufacturing / Industrial',
-              value: 'manufacturing',
-              nextNode: 'manufacturing-size'
-            }
-          ]
-        },
-        'home-office-size': {
-          id: 'home-office-size',
-          question: 'How many devices need protection?',
-          options: [
-            {
-              label: '1-3 devices (Basic Setup)',
-              value: 'basic',
-              solution: {
-                title: 'Home Office Basic Security',
-                description: 'Essential protection for small home offices with basic firewall, antivirus, and backup.',
-                features: ['Basic Firewall', 'Antivirus Protection', 'Cloud Backup', 'Email Support'],
-                price: '$99/month',
-                timeline: '1 week setup'
-              }
-            },
-            {
-              label: '4-10 devices (Professional Setup)',
-              value: 'professional',
-              solution: {
-                title: 'Home Office Professional Security',
-                description: 'Comprehensive security suite for professional home offices with advanced monitoring.',
-                features: ['Advanced Firewall', 'Endpoint Protection', 'VPN Access', 'Real-time Monitoring', 'Priority Support'],
-                price: '$199/month',
-                timeline: '1-2 weeks setup'
-              }
-            }
-          ]
-        },
-        'retail-size': {
-          id: 'retail-size',
-          question: 'What is your store size?',
-          options: [
-            {
-              label: 'Small Store (1-5 employees)',
-              value: 'small',
-              solution: {
-                title: 'Small Retail Security Package',
-                description: 'Complete security solution for small retail operations with POS protection.',
-                features: ['POS Security', 'Network Protection', 'Customer Data Encryption', 'Compliance Support'],
-                price: '$249/month',
-                timeline: '1-2 weeks'
-              }
-            },
-            {
-              label: 'Medium Store (6-20 employees)',
-              value: 'medium',
-              solution: {
-                title: 'Medium Retail Security Suite',
-                description: 'Advanced security with customer data protection and payment processing security.',
-                features: ['Advanced POS Security', 'Multi-location Support', 'Payment Compliance', 'Staff Access Control', '24/7 Monitoring'],
-                price: '$499/month',
-                timeline: '2-3 weeks'
-              }
-            }
-          ]
-        },
-        'office-size': {
-          id: 'office-size',
-          question: 'How many employees do you have?',
-          options: [
-            {
-              label: '10-50 employees',
-              value: 'small-office',
-              solution: {
-                title: 'Small Business Enterprise Security',
-                description: 'Enterprise-grade security for growing businesses with comprehensive threat protection.',
-                features: ['Enterprise Firewall', 'Email Security', 'Employee Training', 'Incident Response', 'Compliance Management'],
-                price: '$799/month',
-                timeline: '2-4 weeks'
-              }
-            },
-            {
-              label: '50+ employees',
-              value: 'large-office',
-              solution: {
-                title: 'Enterprise Security Platform',
-                description: 'Full enterprise security infrastructure with advanced threat detection and response.',
-                features: ['Advanced Threat Detection', 'SIEM Integration', 'Zero Trust Architecture', 'Dedicated Security Team', 'Custom Compliance'],
-                price: '$1,499/month',
-                timeline: '4-8 weeks'
-              }
-            }
-          ]
-        },
-        'manufacturing-size': {
-          id: 'manufacturing-size',
-          question: 'What is your facility size?',
-          options: [
-            {
-              label: 'Small Facility (up to 25 employees)',
-              value: 'small-manufacturing',
-              solution: {
-                title: 'Industrial Security Essentials',
-                description: 'Specialized security for manufacturing with OT/IT convergence protection.',
-                features: ['OT/IT Security', 'Equipment Monitoring', 'Access Control', 'Safety Compliance', 'Remote Monitoring'],
-                price: '$899/month',
-                timeline: '3-6 weeks'
-              }
-            },
-            {
-              label: 'Large Facility (25+ employees)',
-              value: 'large-manufacturing',
-              solution: {
-                title: 'Enterprise Industrial Security',
-                description: 'Complete industrial security platform with advanced OT protection and compliance.',
-                features: ['Advanced OT Protection', 'Predictive Maintenance', 'Safety Integration', 'Supply Chain Security', 'Dedicated Support'],
-                price: '$2,499/month',
-                timeline: '6-12 weeks'
-              }
-            }
-          ]
-        }
+        // ...existing nodes...
       }
     },
     'ai-integration': {
@@ -547,144 +413,7 @@ const SimulatorPanel: React.FC<{
       description: 'Discover the perfect AI integration based on your business goals.',
       startNode: 'ai-goal',
       nodes: {
-        'ai-goal': {
-          id: 'ai-goal',
-          question: 'What is your primary AI integration goal?',
-          options: [
-            {
-              label: 'Customer Service Automation',
-              value: 'customer-service',
-              nextNode: 'customer-service-volume'
-            },
-            {
-              label: 'Content Creation & Marketing',
-              value: 'content-creation',
-              nextNode: 'content-volume'
-            },
-            {
-              label: 'Data Analysis & Insights',
-              value: 'data-analysis',
-              nextNode: 'data-complexity'
-            },
-            {
-              label: 'Process Automation',
-              value: 'process-automation',
-              nextNode: 'process-scope'
-            }
-          ]
-        },
-        'customer-service-volume': {
-          id: 'customer-service-volume',
-          question: 'What is your customer interaction volume?',
-          options: [
-            {
-              label: 'Low Volume (up to 100 queries/day)',
-              value: 'low-volume',
-              solution: {
-                title: 'Basic AI Customer Service',
-                description: 'Simple chatbot integration for basic customer inquiries and support.',
-                features: ['Basic Chatbot', 'FAQ Automation', 'Email Integration', 'Simple Analytics'],
-                price: '$149/month',
-                timeline: '1-2 weeks'
-              }
-            },
-            {
-              label: 'High Volume (100+ queries/day)',
-              value: 'high-volume',
-              solution: {
-                title: 'Advanced AI Customer Platform',
-                description: 'Sophisticated AI system with natural language processing and multi-channel support.',
-                features: ['Advanced NLP', 'Multi-channel Support', 'Sentiment Analysis', 'Live Agent Handoff', 'Advanced Analytics'],
-                price: '$399/month',
-                timeline: '3-4 weeks'
-              }
-            }
-          ]
-        },
-        'content-volume': {
-          id: 'content-volume',
-          question: 'How much content do you need to create?',
-          options: [
-            {
-              label: 'Basic Content Needs',
-              value: 'basic-content',
-              solution: {
-                title: 'AI Content Assistant',
-                description: 'AI-powered content creation tools for social media, blogs, and marketing materials.',
-                features: ['Content Generation', 'Social Media Automation', 'Blog Writing', 'Image Creation'],
-                price: '$199/month',
-                timeline: '1-3 weeks'
-              }
-            },
-            {
-              label: 'High-Volume Content Production',
-              value: 'high-content',
-              solution: {
-                title: 'Enterprise Content Platform',
-                description: 'Complete AI content ecosystem with brand consistency and workflow automation.',
-                features: ['Brand-Consistent Content', 'Workflow Automation', 'Multi-format Creation', 'Content Calendar', 'Team Collaboration'],
-                price: '$599/month',
-                timeline: '3-5 weeks'
-              }
-            }
-          ]
-        },
-        'data-complexity': {
-          id: 'data-complexity',
-          question: 'How complex is your data analysis needs?',
-          options: [
-            {
-              label: 'Basic Reporting & Insights',
-              value: 'basic-data',
-              solution: {
-                title: 'AI Analytics Starter',
-                description: 'Automated reporting and basic predictive analytics for business insights.',
-                features: ['Automated Reports', 'Trend Analysis', 'Basic Predictions', 'Data Visualization'],
-                price: '$299/month',
-                timeline: '2-4 weeks'
-              }
-            },
-            {
-              label: 'Advanced Analytics & ML',
-              value: 'advanced-data',
-              solution: {
-                title: 'Enterprise AI Analytics',
-                description: 'Advanced machine learning models for complex data analysis and predictions.',
-                features: ['Custom ML Models', 'Predictive Analytics', 'Real-time Processing', 'Advanced Visualizations', 'API Integration'],
-                price: '$899/month',
-                timeline: '4-8 weeks'
-              }
-            }
-          ]
-        },
-        'process-scope': {
-          id: 'process-scope',
-          question: 'What processes need automation?',
-          options: [
-            {
-              label: 'Single Process/Department',
-              value: 'single-process',
-              solution: {
-                title: 'Focused Process Automation',
-                description: 'AI automation for specific business processes with workflow optimization.',
-                features: ['Workflow Automation', 'Document Processing', 'Task Scheduling', 'Performance Monitoring'],
-                price: '$349/month',
-                timeline: '2-5 weeks'
-              }
-            },
-            {
-              label: 'Multiple Processes/Enterprise-wide',
-              value: 'enterprise-process',
-              solution: {
-                title: 'Enterprise Automation Platform',
-                description: 'Comprehensive AI automation across multiple departments and processes.',
-                features: ['Cross-department Automation', 'Advanced AI Models', 'Integration Hub', 'Scalable Architecture', 'Custom Development'],
-                price: '$1,299/month',
-                timeline: '6-12 weeks'
-              }
-            }
-          ]
-        }
+        // ...existing nodes...
       }
     },
     'gis-mapping': {
@@ -692,140 +421,383 @@ const SimulatorPanel: React.FC<{
       description: 'Find the ideal mapping solution for your geographic data needs.',
       startNode: 'mapping-purpose',
       nodes: {
-        'mapping-purpose': {
-          id: 'mapping-purpose',
-          question: 'What is your primary mapping purpose?',
+        // ...existing nodes...
+      }
+    },
+    'custom-development': {
+      title: 'Custom Development Solution Finder',
+      description: 'Find the right development approach for your application or business tool.',
+      startNode: 'dev-type',
+      nodes: {
+        'dev-type': {
+          id: 'dev-type',
+          question: 'What do you want to develop?',
           options: [
             {
-              label: 'Business Location Analysis',
-              value: 'business-analysis',
-              nextNode: 'business-scope'
+              label: 'Web Application',
+              value: 'web-app',
+              nextNode: 'web-scale'
             },
             {
-              label: 'Asset & Resource Management',
-              value: 'asset-management',
-              nextNode: 'asset-scope'
+              label: 'Mobile App',
+              value: 'mobile-app',
+              nextNode: 'mobile-platform'
             },
             {
-              label: 'Customer/Market Analysis',
-              value: 'market-analysis',
-              nextNode: 'market-scope'
-            },
-            {
-              label: 'Environmental/Scientific Data',
-              value: 'environmental',
-              nextNode: 'environmental-scope'
+              label: 'Business Automation Tool',
+              value: 'automation-tool',
+              nextNode: 'automation-scope'
             }
           ]
         },
-        'business-scope': {
-          id: 'business-scope',
-          question: 'What is your geographic scope?',
+        'web-scale': {
+          id: 'web-scale',
+          question: 'What is the expected scale of your web app?',
           options: [
             {
-              label: 'Local/Regional (single city/state)',
-              value: 'local',
+              label: 'Small/Medium (internal or limited users)',
+              value: 'web-small',
               solution: {
-                title: 'Local Business Mapping',
-                description: 'Targeted mapping solution for local business analysis and site selection.',
-                features: ['Location Intelligence', 'Site Analysis', 'Competitor Mapping', 'Demographics Integration'],
-                price: '$249/month',
-                timeline: '2-3 weeks'
+                title: 'SMB Web App Development',
+                description: 'Cost-effective web application for small to medium businesses or internal use.',
+                features: ['Responsive Design', 'User Authentication', 'Admin Dashboard', 'API Integration'],
+                price: 'From $2,499/project',
+                timeline: '4-8 weeks'
               }
             },
             {
-              label: 'National/International',
-              value: 'national',
+              label: 'Large/Public (high traffic, SaaS, etc.)',
+              value: 'web-large',
               solution: {
-                title: 'Enterprise Location Platform',
-                description: 'Comprehensive mapping platform for multi-location business operations.',
-                features: ['Multi-location Management', 'Advanced Analytics', 'Real-time Data', 'Custom Dashboards', 'API Access'],
-                price: '$699/month',
-                timeline: '4-6 weeks'
-              }
-            }
-          ]
-        },
-        'asset-scope': {
-          id: 'asset-scope',
-          question: 'What type of assets need tracking?',
-          options: [
-            {
-              label: 'Infrastructure/Equipment',
-              value: 'infrastructure',
-              solution: {
-                title: 'Asset Tracking & Management',
-                description: 'Complete asset management with real-time tracking and maintenance scheduling.',
-                features: ['Real-time Tracking', 'Maintenance Scheduling', 'Condition Monitoring', 'Mobile Access'],
-                price: '$399/month',
-                timeline: '3-5 weeks'
-              }
-            },
-            {
-              label: 'Fleet/Vehicle Management',
-              value: 'fleet',
-              solution: {
-                title: 'Fleet Management Platform',
-                description: 'Advanced fleet tracking with route optimization and driver management.',
-                features: ['GPS Tracking', 'Route Optimization', 'Driver Monitoring', 'Fuel Management', 'Reporting'],
-                price: '$599/month',
-                timeline: '3-4 weeks'
+                title: 'Enterprise Web Platform',
+                description: 'Scalable, secure, and robust web platform for public or high-traffic use.',
+                features: ['Cloud Hosting', 'Scalable Architecture', 'Advanced Security', 'Custom Integrations', 'Performance Optimization'],
+                price: 'From $7,500/project',
+                timeline: '8-16 weeks'
               }
             }
           ]
         },
-        'market-scope': {
-          id: 'market-scope',
-          question: 'What level of market analysis do you need?',
+        'mobile-platform': {
+          id: 'mobile-platform',
+          question: 'Which platforms do you need?',
           options: [
             {
-              label: 'Basic Customer Mapping',
-              value: 'basic-market',
+              label: 'iOS & Android (Cross-platform)',
+              value: 'cross-platform',
               solution: {
-                title: 'Customer Analytics Mapping',
-                description: 'Customer location analysis with demographic and behavioral insights.',
-                features: ['Customer Mapping', 'Demographic Analysis', 'Market Segmentation', 'Sales Territory Planning'],
-                price: '$349/month',
+                title: 'Cross-platform Mobile App',
+                description: 'Single codebase for both iOS and Android using React Native or Flutter.',
+                features: ['Cross-platform Code', 'App Store Deployment', 'Push Notifications', 'Analytics Integration'],
+                price: 'From $3,999/project',
+                timeline: '6-12 weeks'
+              }
+            },
+            {
+              label: 'iOS Only',
+              value: 'ios-only',
+              solution: {
+                title: 'iOS Native App',
+                description: 'Custom native iOS app for Apple devices, optimized for performance.',
+                features: ['Swift Development', 'App Store Launch', 'Apple Pay Integration', 'Custom UI'],
+                price: 'From $3,499/project',
+                timeline: '5-10 weeks'
+              }
+            },
+            {
+              label: 'Android Only',
+              value: 'android-only',
+              solution: {
+                title: 'Android Native App',
+                description: 'Custom native Android app for Google Play, tailored to your needs.',
+                features: ['Kotlin/Java Development', 'Play Store Launch', 'Material Design', 'Device Compatibility'],
+                price: 'From $3,499/project',
+                timeline: '5-10 weeks'
+              }
+            }
+          ]
+        },
+        'automation-scope': {
+          id: 'automation-scope',
+          question: 'What is the scope of automation?',
+          options: [
+            {
+              label: 'Single Process/Department',
+              value: 'single-process',
+              solution: {
+                title: 'Process Automation Tool',
+                description: 'Custom tool to automate a specific business process or workflow.',
+                features: ['Custom Workflow', 'Data Integration', 'User Roles', 'Reporting'],
+                price: 'From $2,999/project',
+                timeline: '4-8 weeks'
+              }
+            },
+            {
+              label: 'Multiple Processes/Company-wide',
+              value: 'multi-process',
+              solution: {
+                title: 'Enterprise Automation Suite',
+                description: 'Comprehensive automation platform for multiple departments or company-wide use.',
+                features: ['Multi-process Automation', 'Integration Hub', 'Advanced Analytics', 'User Management', 'Custom Dashboards'],
+                price: 'From $8,500/project',
+                timeline: '10-20 weeks'
+              }
+            }
+          ]
+        }
+      }
+    },
+    'cloud-solutions': {
+      title: 'Cloud Solutions Finder',
+      description: 'Identify the best cloud solution for your business needs.',
+      startNode: 'cloud-goal',
+      nodes: {
+        'cloud-goal': {
+          id: 'cloud-goal',
+          question: 'What is your primary cloud goal?',
+          options: [
+            {
+              label: 'Migrate Existing Systems',
+              value: 'migration',
+              nextNode: 'migration-size'
+            },
+            {
+              label: 'Set Up New Cloud Infrastructure',
+              value: 'new-setup',
+              nextNode: 'infra-type'
+            },
+            {
+              label: 'Optimize Current Cloud Usage',
+              value: 'optimization',
+              nextNode: 'optimization-focus'
+            }
+          ]
+        },
+        'migration-size': {
+          id: 'migration-size',
+          question: 'How many servers or apps do you need to migrate?',
+          options: [
+            {
+              label: '1-3 servers/apps',
+              value: 'small-migration',
+              solution: {
+                title: 'Basic Cloud Migration',
+                description: 'Smooth migration of a few servers or apps to AWS, Azure, or Google Cloud.',
+                features: ['Migration Planning', 'Data Transfer', 'Security Setup', 'Post-migration Support'],
+                price: 'From $1,499/project',
+                timeline: '1-3 weeks'
+              }
+            },
+            {
+              label: '4+ servers/apps',
+              value: 'large-migration',
+              solution: {
+                title: 'Enterprise Cloud Migration',
+                description: 'Comprehensive migration for larger infrastructures with minimal downtime.',
+                features: ['Bulk Migration', 'Downtime Minimization', 'Compliance Checks', 'Performance Tuning', 'Ongoing Support'],
+                price: 'From $4,999/project',
+                timeline: '3-8 weeks'
+              }
+            }
+          ]
+        },
+        'infra-type': {
+          id: 'infra-type',
+          question: 'What type of infrastructure do you need?',
+          options: [
+            {
+              label: 'Web Hosting/Apps',
+              value: 'web-hosting',
+              solution: {
+                title: 'Cloud Web Hosting',
+                description: 'Scalable and secure cloud hosting for websites and web applications.',
+                features: ['Auto-scaling', 'SSL Security', 'Daily Backups', 'Monitoring'],
+                price: 'From $149/month',
+                timeline: '1-2 weeks'
+              }
+            },
+            {
+              label: 'Data Storage/Backup',
+              value: 'storage-backup',
+              solution: {
+                title: 'Cloud Storage & Backup',
+                description: 'Reliable cloud storage and automated backup solutions for your data.',
+                features: ['Automated Backups', 'Data Encryption', 'Disaster Recovery', 'Access Controls'],
+                price: 'From $99/month',
+                timeline: '1 week'
+              }
+            },
+            {
+              label: 'Custom Infrastructure (DevOps, CI/CD, etc.)',
+              value: 'custom-infra',
+              solution: {
+                title: 'Custom Cloud Infrastructure',
+                description: 'Tailored cloud infrastructure for DevOps, CI/CD, and scalable deployments.',
+                features: ['CI/CD Pipelines', 'Containerization', 'Monitoring & Alerts', 'Custom Networking'],
+                price: 'From $2,499/project',
+                timeline: '2-6 weeks'
+              }
+            }
+          ]
+        },
+        'optimization-focus': {
+          id: 'optimization-focus',
+          question: 'What do you want to optimize?',
+          options: [
+            {
+              label: 'Cost Savings',
+              value: 'cost',
+              solution: {
+                title: 'Cloud Cost Optimization',
+                description: 'Reduce cloud expenses with resource analysis and automated scaling.',
+                features: ['Usage Analysis', 'Auto-scaling', 'Cost Reporting', 'Resource Rightsizing'],
+                price: 'From $499/project',
+                timeline: '1-2 weeks'
+              }
+            },
+            {
+              label: 'Performance & Reliability',
+              value: 'performance',
+              solution: {
+                title: 'Cloud Performance Tuning',
+                description: 'Enhance speed and reliability of your cloud workloads.',
+                features: ['Performance Audit', 'Load Balancing', 'Monitoring Setup', 'Incident Response'],
+                price: 'From $799/project',
+                timeline: '1-3 weeks'
+              }
+            },
+            {
+              label: 'Security & Compliance',
+              value: 'security',
+              solution: {
+                title: 'Cloud Security Enhancement',
+                description: 'Strengthen cloud security and ensure regulatory compliance.',
+                features: ['Security Audit', 'Access Controls', 'Compliance Checks', 'Incident Monitoring'],
+                price: 'From $999/project',
+                timeline: '2-4 weeks'
+              }
+            }
+          ]
+        }
+      }
+    },
+    'business-intelligence': {
+      title: 'Business Intelligence Solution Finder',
+      description: 'Find the right BI solution for your data and reporting needs.',
+      startNode: 'bi-goal',
+      nodes: {
+        'bi-goal': {
+          id: 'bi-goal',
+          question: 'What is your main BI goal?',
+          options: [
+            {
+              label: 'Dashboards & Reporting',
+              value: 'dashboards',
+              nextNode: 'dashboard-users'
+            },
+            {
+              label: 'KPI Tracking',
+              value: 'kpi-tracking',
+              nextNode: 'kpi-complexity'
+            },
+            {
+              label: 'Predictive Analytics',
+              value: 'predictive',
+              nextNode: 'predictive-scope'
+            }
+          ]
+        },
+        'dashboard-users': {
+          id: 'dashboard-users',
+          question: 'How many users need access to dashboards?',
+          options: [
+            {
+              label: '1-10 users',
+              value: 'few-users',
+              solution: {
+                title: 'SMB BI Dashboard',
+                description: 'Simple dashboard and reporting for small teams or departments.',
+                features: ['Custom Dashboards', 'Scheduled Reports', 'User Access Control', 'Data Export'],
+                price: 'From $599/month',
                 timeline: '2-4 weeks'
               }
             },
             {
-              label: 'Advanced Market Intelligence',
-              value: 'advanced-market',
+              label: '11+ users',
+              value: 'many-users',
               solution: {
-                title: 'Market Intelligence Platform',
-                description: 'Comprehensive market analysis with predictive modeling and competitive intelligence.',
-                features: ['Predictive Modeling', 'Competitive Analysis', 'Market Forecasting', 'Risk Assessment', 'Custom Reports'],
-                price: '$899/month',
-                timeline: '5-8 weeks'
+                title: 'Enterprise BI Platform',
+                description: 'Scalable BI platform with advanced sharing and collaboration.',
+                features: ['Role-based Access', 'Collaboration Tools', 'Data Integration', 'Mobile Access', 'Advanced Visualizations'],
+                price: 'From $1,499/month',
+                timeline: '4-8 weeks'
               }
             }
           ]
         },
-        'environmental-scope': {
-          id: 'environmental-scope',
-          question: 'What type of environmental data?',
+        'kpi-complexity': {
+          id: 'kpi-complexity',
+          question: 'How complex are your KPIs?',
           options: [
             {
-              label: 'Basic Environmental Monitoring',
-              value: 'basic-environmental',
+              label: 'Basic (sales, revenue, etc.)',
+              value: 'basic-kpi',
               solution: {
-                title: 'Environmental Data Platform',
-                description: 'Environmental monitoring and analysis with satellite data integration.',
-                features: ['Satellite Data', 'Environmental Monitoring', 'Change Detection', 'Data Visualization'],
-                price: '$499/month',
+                title: 'Basic KPI Tracking',
+                description: 'Track and visualize standard business KPIs with automated updates.',
+                features: ['Sales Tracking', 'Revenue Charts', 'Goal Progress', 'Email Alerts'],
+                price: 'From $499/month',
+                timeline: '2-3 weeks'
+              }
+            },
+            {
+              label: 'Advanced (custom formulas, multi-source)',
+              value: 'advanced-kpi',
+              solution: {
+                title: 'Advanced KPI Analytics',
+                description: 'Custom KPI dashboards with multi-source data and complex calculations.',
+                features: ['Custom Formulas', 'Multi-source Integration', 'Drill-down Reports', 'Trend Analysis'],
+                price: 'From $1,299/month',
+                timeline: '4-6 weeks'
+              }
+            }
+          ]
+        },
+        'predictive-scope': {
+          id: 'predictive-scope',
+          question: 'What do you want to predict?',
+          options: [
+            {
+              label: 'Sales/Revenue Forecasting',
+              value: 'sales-forecast',
+              solution: {
+                title: 'Sales Forecasting Analytics',
+                description: 'Predict future sales and revenue with machine learning models.',
+                features: ['Forecast Models', 'Scenario Analysis', 'Data Visualization', 'Alerts'],
+                price: 'From $1,499/month',
                 timeline: '4-6 weeks'
               }
             },
             {
-              label: 'Advanced Scientific Analysis',
-              value: 'advanced-environmental',
+              label: 'Customer Behavior/Churn',
+              value: 'customer-churn',
               solution: {
-                title: 'Scientific GIS Platform',
-                description: 'Advanced scientific analysis with custom modeling and research tools.',
-                features: ['Custom Modeling', 'Scientific Analysis', 'Research Tools', 'Data Integration', 'Collaboration Features'],
-                price: '$1,199/month',
-                timeline: '6-10 weeks'
+                title: 'Customer Analytics Platform',
+                description: 'Predict customer churn and behavior for proactive engagement.',
+                features: ['Churn Prediction', 'Segmentation', 'Engagement Insights', 'Automated Alerts'],
+                price: 'From $1,799/month',
+                timeline: '5-8 weeks'
+              }
+            },
+            {
+              label: 'Other (custom predictive models)',
+              value: 'custom-predictive',
+              solution: {
+                title: 'Custom Predictive Analytics',
+                description: 'Tailored predictive analytics for your unique business questions.',
+                features: ['Custom ML Models', 'Data Integration', 'Interactive Dashboards', 'Ongoing Support'],
+                price: 'From $2,499/month',
+                timeline: '6-12 weeks'
               }
             }
           ]
@@ -883,13 +855,23 @@ const SimulatorPanel: React.FC<{
             From cybersecurity to AI integration, we provide comprehensive technology solutions 
             tailored for businesses of all sizes - from home offices to medium enterprises.
           </p>
-        </div>
+          <h3 className="text-2xl font-semibold text-gray-800 mt-8">
+            Explore Our Interactive Solution Finder, Click on a Service to Start
+          </h3>
+        </div>  
 
         {/* Two-column layout: Services on left, Simulator on right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-20 lg:h-[800px]">
           {/* Services Grid - Left Side */}
           <div className="lg:h-full overflow-y-auto">
-            <div className="grid gap-6 pr-4">
+            <div 
+              className="pr-4"
+              style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+                gap: '24px'
+              }}
+            >
               {services.map((service) => (
                 <ServiceCard
                   key={service.id}
