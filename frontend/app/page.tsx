@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Services from '../components/sections/services';
 
 interface TabType {
   id: string;
@@ -399,105 +400,7 @@ export default function Home() {
     {
       id: 'services',
       label: 'Services',
-      component: (
-        <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'white', padding: '80px 32px' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-              <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'black', marginBottom: '24px', letterSpacing: '-0.02em' }}>
-                Complete Technology Services
-              </h2>
-              <div style={{ width: '80px', height: '2px', backgroundColor: '#4f46e5', margin: '0 auto 32px' }}></div>
-              <p style={{ fontSize: '20px', color: '#6b7280', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
-                From basic IT support to advanced AI integration and custom GIS solutions, we provide technology services that scale with your business.
-              </p>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px' }}>
-              {[
-                {
-                  icon: '�️',
-                  title: 'IT Security & Management',
-                  description: 'Complete IT infrastructure management from basic firewalls to enterprise security planning and monitoring.',
-                  features: ['Network Security', 'Backup Solutions', 'Firewall Management', 'Security Audits']
-                },
-                {
-                  icon: '🤖',
-                  title: 'AI API Integration',
-                  description: 'Custom AI solutions and API integrations to automate processes and enhance business intelligence.',
-                  features: ['ChatGPT Integration', 'Custom AI Models', 'Process Automation', 'Data Analytics']
-                },
-                {
-                  icon: '�️',
-                  title: 'GIS & Interactive Maps',
-                  description: 'Geospatial solutions, custom mapping applications, and location-based services for data visualization.',
-                  features: ['Custom Map Applications', 'Spatial Analysis', 'Data Visualization', 'Location Services']
-                },
-                {
-                  icon: '💻',
-                  title: 'Custom Development',
-                  description: 'Full-stack development services for web applications, mobile apps, and business automation tools.',
-                  features: ['Web Applications', 'Mobile Development', 'Database Design', 'System Integration']
-                },
-                {
-                  icon: '☁️',
-                  title: 'Cloud Solutions',
-                  description: 'Cloud migration, management, and optimization services for scalable and secure business operations.',
-                  features: ['Cloud Migration', 'AWS/Azure Setup', 'Data Backup', 'Performance Optimization']
-                },
-                {
-                  icon: '📊',
-                  title: 'Business Intelligence',
-                  description: 'Data analysis, reporting dashboards, and business intelligence solutions to drive informed decisions.',
-                  features: ['Data Analytics', 'Custom Dashboards', 'Report Automation', 'KPI Monitoring']
-                }
-              ].map((service, index) => (
-                <div key={index} style={{ 
-                  backgroundColor: 'white', 
-                  border: '1px solid #e5e5e5', 
-                  borderRadius: '16px', 
-                  padding: '32px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  const target = e.currentTarget as HTMLElement;
-                  target.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
-                  target.style.transform = 'translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.currentTarget as HTMLElement;
-                  target.style.boxShadow = 'none';
-                  target.style.transform = 'translateY(0)';
-                }}>
-                  <div style={{ fontSize: '48px', marginBottom: '24px' }}>{service.icon}</div>
-                  <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'black', marginBottom: '16px' }}>{service.title}</h3>
-                  <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: '24px' }}>{service.description}</p>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        marginBottom: '8px',
-                        color: '#374151',
-                        fontSize: '14px'
-                      }}>
-                        <div style={{ 
-                          width: '6px', 
-                          height: '6px', 
-                          backgroundColor: '#4f46e5', 
-                          borderRadius: '50%', 
-                          marginRight: '12px' 
-                        }}></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )
+      component: <Services />
     },
     {
       id: 'insights',
