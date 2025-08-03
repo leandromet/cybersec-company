@@ -871,182 +871,6 @@ const SimulatorPanel: React.FC<{
     setFinalSolution(null);
   };
 
-  const renderSimulator = () => {
-    console.log('renderSimulator called, expandedService:', expandedService);
-    
-    if (!expandedService || !simulatorData[expandedService]) {
-      console.log('Not rendering simulator - no expanded service or simulator data');
-      return null;
-    }
-
-    const simulator = simulatorData[expandedService];
-    const currentNodeData = currentNode ? simulator.nodes[currentNode] : null;
-    
-    console.log('Rendering simulator for:', expandedService, 'currentNode:', currentNode);
-
-    return (
-        <div className="w-full bg-white rounded-2xl shadow-xl border border-gray-200 h-full overflow-y-auto">
-          <div className="p-6">
-            {/* Header */}
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{simulator.title}</h3>
-                <p className="text-gray-600 text-sm">{simulator.description}</p>
-              </div>
-              <button
-                onClick={resetSimulator}
-                className="text-gray-400 hover:text-gray-600 text-2xl w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-all duration-200"
-              >
-                ×
-              </button>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="mb-6">
-              <div className="flex items-center space-x-2 mb-2">
-                <span className="text-xs font-medium text-gray-600">Progress</span>
-                <div className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
-                  <div 
-                    className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full transition-all duration-500 ease-out"
-                    style={{ 
-                      width: finalSolution ? '100%' : 
-                             Object.keys(selections).length > 0 ? '60%' : '20%' 
-                    }}
-                  ></div>
-                </div>
-                <span className="text-xs font-medium text-gray-600">
-                  {finalSolution ? '100%' : Object.keys(selections).length > 0 ? '60%' : '20%'}
-                </span>
-              </div>
-            </div>            {/* Current Question */}
-            {currentNodeData && (
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                  {currentNodeData.question}
-                </h4>
-                <div className="grid gap-3">
-                  {currentNodeData.options.map((option, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleOptionSelect(currentNodeData.id, option)}
-                      className="text-left p-4 border-2 border-gray-200 rounded-xl hover:border-indigo-300 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 group transform hover:scale-[1.02]"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium text-gray-900 group-hover:text-indigo-700 text-sm">
-                          {option.label}
-                        </span>
-                        <div className="w-6 h-6 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-indigo-500 group-hover:bg-indigo-500 transition-all duration-300">
-                          <span className="text-xs group-hover:text-white font-bold">→</span>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Final Solution */}
-            {finalSolution && (
-              <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <span className="text-2xl text-white">✓</span>
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">
-                    Recommended Solution
-                  </h4>
-                  <div className="w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 mb-6 shadow border border-gray-100">
-                  <h5 className="text-lg font-bold text-gray-900 mb-3">
-                    {finalSolution.title}
-                  </h5>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {finalSolution.description}
-                  </p>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <h6 className="font-bold text-gray-900 mb-3 text-sm flex items-center">
-                        <span className="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center mr-2">
-                          <span className="text-white text-xs">✓</span>
-                        </span>
-                        Features:
-                      </h6>
-                      <ul className="space-y-2">
-                        {finalSolution.features.map((feature: string, index: number) => (
-                          <li key={index} className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full"></div>
-                            <span className="text-gray-700 text-xs">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
-                        <h6 className="font-bold text-gray-900 mb-1 text-xs">Investment:</h6>
-                        <p className="text-lg font-bold text-indigo-600">{finalSolution.price}</p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl">
-                        <h6 className="font-bold text-gray-900 mb-1 text-xs">Timeline:</h6>
-                        <p className="text-gray-700 text-sm font-semibold">{finalSolution.timeline}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex space-x-3">
-                  <button
-                    onClick={() => {
-                      resetSimulator();
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow text-sm"
-                  >
-                    Get Quote
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCurrentNode(simulator.startNode);
-                      setSelections({});
-                      setFinalSolution(null);
-                    }}
-                    className="flex-1 border-2 border-gray-300 text-gray-700 font-bold py-3 px-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 transform hover:scale-105 text-sm"
-                  >
-                    Restart
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Selection Summary */}
-            {Object.keys(selections).length > 0 && !finalSolution && (
-              <div className="mt-6 p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
-                <h6 className="font-bold text-gray-900 mb-3 flex items-center text-sm">
-                  <span className="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center mr-2">
-                    <span className="text-white text-xs">📝</span>
-                  </span>
-                  Your Selections:
-                </h6>
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(selections).map(([key, value]) => (
-                    <span
-                      key={key}
-                      className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200"
-                    >
-                      {value}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-    );
-  };
-
   return (
     <section id="services" className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-20">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -1066,103 +890,49 @@ const SimulatorPanel: React.FC<{
           {/* Services Grid - Left Side */}
           <div className="lg:h-full overflow-y-auto">
             <div className="grid gap-6 pr-4">
-              {services.map((service, index) => (
-          <div
-            key={index}
-            className={`group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border cursor-pointer transform hover:scale-[1.02] ${
-              expandedService === service.id 
-                ? 'border-indigo-300 bg-gradient-to-r from-indigo-50 to-purple-50' 
-                : 'border-gray-200 hover:border-indigo-200'
-            }`}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log('Card clicked!', service.id);
-              handleServiceClick(service.id);
-            }}
-            style={{ userSelect: 'none' }}
-          >
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-xl">{service.icon}</span>
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
-            {service.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-            {service.description}
-                </p>
-                
-                <div className="flex items-center justify-between mb-4">
-            <div>
-              <span className="text-lg font-bold text-indigo-600 block">
-                {service.price}
-              </span>
-              <span className="text-gray-500 text-xs">{service.timeline}</span>
-            </div>
-            
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Button clicked!', service.id);
-                handleServiceClick(service.id);
-              }}
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Start Simulator →
-            </button>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-            {service.features.slice(0, 3).map((feature, featureIndex) => (
-              <span
-                key={featureIndex}
-                className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs"
-              >
-                {feature}
-              </span>
-            ))}
-            {service.features.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded text-xs">
-                +{service.features.length - 3} more
-              </span>
-            )}
-                </div>
-              </div>
-            </div>
-          </div>
+              {services.map((service) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  isActive={expandedService === service.id}
+                  onClick={() => handleServiceClick(service.id)}
+                />
               ))}
             </div>
           </div>
 
-            {/* Simulator Panel - Right Side */}
-            <div className="lg:h-full">
-            {expandedService ? (
-              <div className="min-h-[600px] lg:h-full flex items-start">
-              <div className="w-full">
-                {renderSimulator()}
-              </div>
-              </div>
+          {/* Simulator Panel - Right Side */}
+          <div className="lg:h-full">
+            {expandedService && simulatorData[expandedService] ? (
+              <SimulatorPanel
+                simulator={simulatorData[expandedService]}
+                currentNode={currentNode}
+                selections={selections}
+                finalSolution={finalSolution}
+                onOptionSelect={handleOptionSelect}
+                onReset={resetSimulator}
+                onRestart={() => {
+                  setCurrentNode(simulatorData[expandedService].startNode);
+                  setSelections({});
+                  setFinalSolution(null);
+                }}
+              />
             ) : (
               <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 text-center min-h-[600px] lg:h-full flex items-center justify-center">
-              <div>
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🎯</span>
+                <div>
+                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-3xl">🎯</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    Interactive Solution Finder
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Click on any service card to start an interactive simulator that will help you find the perfect solution for your business needs.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Interactive Solution Finder
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                Click on any service card to start an interactive simulator that will help you find the perfect solution for your business needs.
-                </p>
-              </div>
               </div>
             )}
-            </div>
+          </div>
         </div>
 
         {/* Call to Action */}
