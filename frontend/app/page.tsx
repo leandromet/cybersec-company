@@ -40,7 +40,7 @@ export default function Home() {
                 letterSpacing: '-0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}>
-                Vernon TechSolutions
+                Okanagan GeoTechSolutions
               </h1>
               <p style={{ 
                 fontSize: '24px', 
@@ -112,7 +112,7 @@ export default function Home() {
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                 <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'black', marginBottom: '24px', letterSpacing: '-0.02em' }}>
-                  Why Choose Vernon TechSolutions?
+                  Why Choose Okanagan GeoTechSolutions?
                 </h2>
                 <div style={{ width: '80px', height: '2px', backgroundColor: '#4f46e5', margin: '0 auto 32px' }}></div>
                 <p style={{ fontSize: '20px', color: '#6b7280', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
@@ -214,7 +214,7 @@ export default function Home() {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '80px' }}>
               <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'black', marginBottom: '24px', letterSpacing: '-0.02em' }}>
-                About Vernon TechSolutions
+                About Okanagan GeoTechSolutions
               </h2>
               <div style={{ width: '80px', height: '2px', backgroundColor: '#4f46e5', margin: '0 auto 32px' }}></div>
               <p style={{ fontSize: '20px', color: '#6b7280', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
@@ -523,7 +523,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: '1.5', marginTop: '20px' }}>
-                  Quality metrics across all Vernon TechSolutions client projects and services.
+                  Quality metrics across all Okanagan TechSolutions client projects and services.
                 </p>
               </div>
             </div>
@@ -589,7 +589,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px' }}>
               {[
                 {
-                  quote: "Vernon TechSolutions transformed our entire business with their AI integration. Our customer service efficiency improved by 300% with their custom chatbot solution.",
+                  quote: "Okanagan GeoTechSolutions transformed our entire business with their AI integration. Our customer service efficiency improved by 300% with their custom chatbot solution.",
                   author: "Sarah Mitchell",
                   title: "CEO, Interior Marketing Agency",
                   company: "Kamloops, BC"
@@ -889,7 +889,7 @@ export default function Home() {
         <div style={{ display: 'flex', height: '80px' }}>
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', padding: '0 32px', backgroundColor: '#f9fafb', borderRight: '1px solid #e5e5e5' }}>
-            <span style={{ fontWeight: '900', fontSize: '24px', color: 'black' }}>Vernon</span>
+            <span style={{ fontWeight: '900', fontSize: '24px', color: 'black' }}>Okanagan</span>
             <span style={{ fontWeight: '900', fontSize: '24px', color: '#4f46e5', marginLeft: '4px' }}>Tech</span>
           </div>
           

@@ -1,8 +1,8 @@
 {
-  "name": "vernon-cybersec-backend",
+  "name": "okanagan-techgeo-backend",
   "version": "1.0.0",
-  "description": "Vernon Cyber Security Solutions - Backend API",
-  "author": "Vernon Cyber Security Solutions",
+  "description": "Okanagan GeoTechSolutions - Backend API",
+  "author": "Okanagan GeoTechSolutions",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

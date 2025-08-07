@@ -141,19 +141,64 @@ const ServiceCard: React.FC<{
 
       {/* Action Button */}
       <button
-        className={`
-          w-[90%] mx-auto block py-3 rounded-xl text-sm font-semibold transition-all duration-300
-          shadow-md hover:shadow-lg mb-6
-          ${
-            isActive
-              ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
-              : "bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:from-indigo-600 hover:to-purple-600"
+        style={{
+          background: isActive 
+            ? 'linear-gradient(to right, #4f46e5, #7c3aed)' 
+            : 'linear-gradient(to right, #374151, #1f2937)',
+          color: 'white',
+          width: '90%',
+          margin: '0 auto',
+          display: 'block',
+          padding: '12px',
+          borderRadius: '12px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          border: 'none',
+          cursor: 'pointer',
+          marginBottom: '24px',
+          position: 'relative',
+          overflow: 'hidden',
+          boxShadow: isActive 
+            ? '0 10px 25px rgba(79, 70, 229, 0.3), 0 0 0 2px rgba(99, 102, 241, 0.3)' 
+            : '0 10px 25px rgba(0, 0, 0, 0.1)',
+          transform: isActive ? 'scale(1.05)' : 'scale(1)',
+          transition: 'all 0.3s ease'
+        }}
+        onMouseEnter={(e) => {
+          if (!isActive) {
+            e.currentTarget.style.background = 'linear-gradient(to right, #4f46e5, #7c3aed)';
+            e.currentTarget.style.transform = 'scale(1.05)';
           }
-        `}
+        }}
+        onMouseLeave={(e) => {
+          if (!isActive) {
+            e.currentTarget.style.background = 'linear-gradient(to right, #374151, #1f2937)';
+            e.currentTarget.style.transform = 'scale(1)';
+          }
+        }}
         tabIndex={-1}
         type="button"
       >
-        {isActive ? "Simulator Active" : "Run Solution Finder"} →
+        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', position: 'relative', zIndex: 10 }}>
+          <span>
+            {isActive ? "Simulator Active" : "Run Solution Finder"}
+          </span>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
+              color: 'white',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            →
+          </span>
+        </span>
       </button>
 
       {/* Category Badge */}
@@ -182,6 +227,8 @@ const Services = () => {
   );
   const [finalSolution, setFinalSolution] = useState<Solution | null>(null);
 
+
+
   // Simulator Panel Component
   const SimulatorPanel: React.FC<{
     simulator: SimulatorData[string];
@@ -208,45 +255,191 @@ const Services = () => {
       : 20;
 
     return (
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 h-full overflow-hidden flex flex-col">
+      <div style={{
+        backgroundColor: '#1f2937',
+        borderRadius: '16px',
+        border: '2px solid #4f46e5',
+        boxShadow: '0 25px 50px rgba(79, 70, 229, 0.25), 0 0 0 1px rgba(79, 70, 229, 0.1)',
+        height: '100%',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative'
+      }}>
+        {/* Animated glow border */}
+        <div style={{
+          position: 'absolute',
+          inset: '-2px',
+          background: 'linear-gradient(45deg, #4f46e5, #7c3aed, #ec4899, #4f46e5)',
+          borderRadius: '18px',
+          opacity: 0.7,
+          filter: 'blur(8px)',
+          zIndex: -1,
+          animation: 'pulse 3s ease-in-out infinite'
+        }} />
+
+        {/* Close Button - Top Right */}
+        <button
+          onClick={onReset}
+          style={{
+            position: 'absolute',
+            top: '16px',
+            right: '16px',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            border: '1px solid #e5e7eb',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#9ca3af',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            zIndex: 10
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#f3f4f6';
+            e.currentTarget.style.color = '#374151';
+            e.currentTarget.style.boxShadow = '0 10px 15px rgba(0, 0, 0, 0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'white';
+            e.currentTarget.style.color = '#9ca3af';
+            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+          }}
+        >
+          ✕
+        </button>
+        
         {/* Header */}
-        <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-purple-50">
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {simulator.title}
-              </h3>
-              <p className="text-gray-600 text-sm">{simulator.description}</p>
-            </div>
-            <button
-              onClick={onReset}
-              className="ml-4 w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-all duration-200"
-            >
-              ✕
-            </button>
+        <div style={{
+          padding: '24px',
+          borderBottom: '1px solid #374151',
+          background: 'linear-gradient(135deg, #1e293b 0%, #374151 100%)',
+          position: 'relative'
+        }}>
+          <div style={{ marginBottom: '16px', paddingRight: '50px' }}>
+            <h3 style={{
+              fontSize: '24px',
+              fontWeight: 'bold',
+              color: 'white',
+              marginBottom: '8px'
+            }}>
+              {simulator.title}
+            </h3>
+            <p style={{
+              color: '#d1d5db',
+              fontSize: '14px'
+            }}>{simulator.description}</p>
           </div>
 
           {/* Progress Bar */}
           <div className="space-y-2">
-            <div className="flex justify-between text-xs font-medium text-gray-600">
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              fontSize: '12px', 
+              fontWeight: '500', 
+              color: '#d1d5db' 
+            }}>
               <span>Progress</span>
               <span>{progressPercentage}%</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div style={{
+              width: '100%',
+              backgroundColor: '#374151',
+              borderRadius: '9999px',
+              height: '12px',
+              overflow: 'hidden',
+              border: '1px solid #4b5563'
+            }}>
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-700 ease-out"
-                style={{ width: `${progressPercentage}%` }}
+                style={{ 
+                  height: '100%',
+                  background: 'linear-gradient(to right, #6366f1, #8b5cf6, #ec4899)',
+                  borderRadius: '9999px',
+                  transition: 'all 0.7s ease-out',
+                  width: `${progressPercentage}%`,
+                  boxShadow: '0 0 10px rgba(99, 102, 241, 0.5)'
+                }}
               />
             </div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-6 overflow-y-auto">
+        <div style={{
+          flex: 1,
+          padding: '24px',
+          overflowY: 'auto',
+          backgroundColor: '#111827',
+          color: 'white'
+        }}>
+          {/* Selection Summary */}
+          {Object.keys(selections).length > 0 && !finalSolution && (
+            <div style={{
+              marginBottom: '24px',
+              padding: '16px',
+              background: 'linear-gradient(to right, #374151, #4b5563)',
+              borderRadius: '12px',
+              border: '1px solid #6b7280'
+            }}>
+              <h6 style={{
+                fontWeight: 'bold',
+                color: 'white',
+                marginBottom: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: '14px'
+              }}>
+                <span style={{
+                  width: '20px',
+                  height: '20px',
+                  backgroundColor: '#6366f1',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: '8px'
+                }}>
+                  <span style={{ color: 'white', fontSize: '12px' }}>📝</span>
+                </span>
+                Your Selections:
+              </h6>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(selections).map(([key, value]) => (
+                  <span
+                    key={key}
+                    style={{
+                      padding: '4px 12px',
+                      background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                      color: 'white',
+                      borderRadius: '9999px',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      border: '1px solid #a5b4fc'
+                    }}
+                  >
+                    {value}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Current Question */}
           {currentNodeData && !finalSolution && (
             <div className="space-y-6">
-              <h4 className="text-xl font-semibold text-gray-900">
+              <h4 style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                color: 'white',
+                marginBottom: '24px'
+              }}>
                 {currentNodeData.question}
               </h4>
 
@@ -255,14 +448,53 @@ const Services = () => {
                   <button
                     key={index}
                     onClick={() => onOptionSelect(currentNodeData.id, option)}
-                    className="w-full text-left p-4 border-2 border-gray-200 rounded-xl hover:border-indigo-300 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 group"
+                    style={{
+                      width: '100%',
+                      textAlign: 'left',
+                      padding: '16px',
+                      border: '2px solid #374151',
+                      borderRadius: '12px',
+                      backgroundColor: '#1f2937',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      display: 'block'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#6366f1';
+                      e.currentTarget.style.background = 'linear-gradient(to right, #1e293b, #312e81)';
+                      e.currentTarget.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#374151';
+                      e.currentTarget.style.background = '#1f2937';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-900 group-hover:text-indigo-700">
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ 
+                        fontWeight: '500', 
+                        color: 'white',
+                        transition: 'color 0.3s ease'
+                      }}>
                         {option.label}
                       </span>
-                      <div className="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-indigo-500 group-hover:bg-indigo-500 transition-all duration-300">
-                        <span className="text-sm group-hover:text-white font-bold">
+                      <div style={{
+                        width: '32px',
+                        height: '32px',
+                        border: '2px solid #6b7280',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: 'all 0.3s ease',
+                        backgroundColor: 'transparent'
+                      }}>
+                        <span style={{
+                          fontSize: '14px',
+                          fontWeight: 'bold',
+                          color: '#9ca3af',
+                          transition: 'color 0.3s ease'
+                        }}>
                           →
                         </span>
                       </div>
@@ -276,37 +508,100 @@ const Services = () => {
           {/* Final Solution */}
           {finalSolution && (
             <div className="space-y-6">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-3xl text-white">✓</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ flex: 1 }}>
+                  <h4 style={{
+                    fontSize: '24px',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    marginBottom: '8px'
+                  }}>
+                    Perfect Match Found!
+                  </h4>
+                  <div style={{
+                    width: '64px',
+                    height: '4px',
+                    background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                    borderRadius: '2px'
+                  }} />
                 </div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                  Perfect Match Found!
-                </h4>
-                <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto" />
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 15px 30px rgba(16, 185, 129, 0.4)',
+                  flexShrink: 0
+                }}>
+                  <span style={{ fontSize: '24px', color: 'white' }}>✓</span>
+                </div>
               </div>
 
-              <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 rounded-xl p-6 border border-indigo-100">
-                <h5 className="text-xl font-bold text-gray-900 mb-3">
+              <div style={{
+                background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                borderRadius: '12px',
+                padding: '24px',
+                border: '1px solid #374151'
+              }}>
+                <h5 style={{
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '12px'
+                }}>
                   {finalSolution.title}
                 </h5>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p style={{
+                  color: '#d1d5db',
+                  marginBottom: '24px',
+                  lineHeight: '1.6'
+                }}>
                   {finalSolution.description}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h6 className="font-bold text-gray-900 mb-3 flex items-center">
-                      <span className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center mr-2">
-                        <span className="text-white text-xs">✓</span>
+                    <h6 style={{
+                      fontWeight: 'bold',
+                      color: 'white',
+                      marginBottom: '12px',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}>
+                      <span style={{
+                        width: '20px',
+                        height: '20px',
+                        backgroundColor: '#6366f1',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: '8px'
+                      }}>
+                        <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
                       </span>
                       Features Included:
                     </h6>
                     <ul className="space-y-2">
                       {finalSolution.features.map((feature, index) => (
-                        <li key={index} className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full" />
-                          <span className="text-gray-700 text-sm">
+                        <li key={index} style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '8px' 
+                        }}>
+                          <div style={{
+                            width: '8px',
+                            height: '8px',
+                            background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                            borderRadius: '50%'
+                          }} />
+                          <span style={{
+                            color: '#d1d5db',
+                            fontSize: '14px'
+                          }}>
                             {feature}
                           </span>
                         </li>
@@ -315,19 +610,54 @@ const Services = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="p-4 bg-white rounded-xl border border-indigo-100">
-                      <h6 className="font-bold text-gray-900 mb-1 text-sm">
+                    <div style={{
+                      padding: '12px 16px',
+                      backgroundColor: '#374151',
+                      borderRadius: '12px',
+                      border: '1px solid #4b5563',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
+                    }}>
+                      <h6 style={{
+                        fontWeight: 'bold',
+                        color: 'white',
+                        fontSize: '14px',
+                        margin: 0
+                      }}>
                         Investment:
                       </h6>
-                      <p className="text-2xl font-bold text-indigo-600">
+                      <p style={{
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        color: '#a5b4fc',
+                        margin: 0
+                      }}>
                         {finalSolution.price}
                       </p>
                     </div>
-                    <div className="p-4 bg-white rounded-xl border border-gray-200">
-                      <h6 className="font-bold text-gray-900 mb-1 text-sm">
+                    <div style={{
+                      padding: '12px 16px',
+                      backgroundColor: '#374151',
+                      borderRadius: '12px',
+                      border: '1px solid #4b5563',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
+                    }}>
+                      <h6 style={{
+                        fontWeight: 'bold',
+                        color: 'white',
+                        fontSize: '14px',
+                        margin: 0
+                      }}>
                         Timeline:
                       </h6>
-                      <p className="text-gray-700 font-semibold">
+                      <p style={{
+                        color: '#d1d5db',
+                        fontWeight: '600',
+                        margin: 0
+                      }}>
                         {finalSolution.timeline}
                       </p>
                     </div>
@@ -342,39 +672,55 @@ const Services = () => {
                         .getElementById("contact")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-6 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    style={{
+                      flex: '1',
+                      background: 'linear-gradient(to right, #4f46e5, #7c3aed)',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      padding: '12px 24px',
+                      borderRadius: '12px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 10px 25px rgba(79, 70, 229, 0.3)',
+                      transform: 'scale(1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(to right, #4338ca, #6d28d9)';
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(to right, #4f46e5, #7c3aed)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
                   >
                     Get Quote Now
                   </button>
                   <button
                     onClick={onRestart}
-                    className="flex-1 border-2 border-gray-300 text-gray-700 font-bold py-3 px-6 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
+                    style={{
+                      flex: '1',
+                      background: 'white',
+                      color: '#374151',
+                      fontWeight: 'bold',
+                      padding: '12px 24px',
+                      borderRadius: '12px',
+                      border: '2px solid #d1d5db',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#f9fafb';
+                      e.currentTarget.style.borderColor = '#9ca3af';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'white';
+                      e.currentTarget.style.borderColor = '#d1d5db';
+                    }}
                   >
                     Try Again
                   </button>
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* Selection Summary */}
-          {Object.keys(selections).length > 0 && !finalSolution && (
-            <div className="mt-6 p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
-              <h6 className="font-bold text-gray-900 mb-3 flex items-center text-sm">
-                <span className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center mr-2">
-                  <span className="text-white text-xs">📝</span>
-                </span>
-                Your Selections:
-              </h6>
-              <div className="flex flex-wrap gap-2">
-                {Object.entries(selections).map(([key, value]) => (
-                  <span
-                    key={key}
-                    className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200"
-                  >
-                    {value}
-                  </span>
-                ))}
               </div>
             </div>
           )}
@@ -1604,14 +1950,17 @@ const Services = () => {
     console.log("Simulator data exists:", !!simulatorData[serviceId]);
     console.log("Available simulators:", Object.keys(simulatorData));
 
+    // Always set the service as expanded/active first
+    setExpandedService(serviceId);
+    setSelections({});
+    setFinalSolution(null);
+
     if (simulatorData[serviceId]) {
-      console.log("Setting expanded service to:", serviceId);
-      setExpandedService(serviceId);
+      console.log("Setting up simulator for:", serviceId);
       setCurrentNode(simulatorData[serviceId].startNode);
-      setSelections({});
-      setFinalSolution(null);
     } else {
       console.log("No simulator found for:", serviceId);
+      setCurrentNode("");
       // For services without simulators, show a simple message
       alert(
         `Interactive simulator for ${serviceId} coming soon! Please contact us for more information.`
@@ -1752,18 +2101,56 @@ const Services = () => {
       <button
         onClick={() =>
           document
-            .getElementById("contact")
-            ?.scrollIntoView({ behavior: "smooth" })
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" })
         }
-        className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold px-12 py-4 rounded-full text-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:from-indigo-700 hover:to-purple-700 transform"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          background: 'linear-gradient(to right, #9333ea, #4f46e5, #ec4899)',
+          color: 'white',
+          fontWeight: 'bold',
+          padding: '16px 48px',
+          borderRadius: '9999px',
+          fontSize: '18px',
+          border: 'none',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+          transform: 'scale(1)',
+          boxShadow: '0 10px 25px rgba(147, 51, 234, 0.3)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.1)';
+          e.currentTarget.style.background = 'linear-gradient(to right, #7c2d12, #1e40af, #be185d)';
+          e.currentTarget.style.boxShadow = '0 20px 40px rgba(147, 51, 234, 0.5)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.background = 'linear-gradient(to right, #9333ea, #4f46e5, #ec4899)';
+          e.currentTarget.style.boxShadow = '0 10px 25px rgba(147, 51, 234, 0.3)';
+        }}
       >
-        <div className="relative flex items-center space-x-3">
+        <div style={{ 
+          position: 'relative', 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px',
+          zIndex: 10
+        }}>
           <span>Start Your Transformation</span>
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-            <span className="text-lg">🚀</span>
+          <div style={{
+            width: '32px',
+            height: '32px',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'transform 0.3s ease'
+          }}>
+        <span style={{ fontSize: '18px' }}>🚀</span>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </button>
     </div>
   </div>

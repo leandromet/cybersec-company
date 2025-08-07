@@ -17,7 +17,7 @@ async function bootstrap() {
 
   // Swagger documentation
   const config = new DocumentBuilder()
-    .setTitle('Vernon Cyber Security Solutions API')
+    .setTitle('Okanagan GeoTechSolutions API')
     .setDescription('API for cybersecurity services and client management')
     .setVersion('1.0')
     .addBearerAuth()

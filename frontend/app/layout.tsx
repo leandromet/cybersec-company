@@ -6,15 +6,15 @@ import { ThemeProvider } from '@/components/providers/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Vernon Cyber Security Solutions - Protecting BC Businesses',
+  title: 'Okanagan GeoTechSolutions - Protecting BC Businesses',
   description: 'Professional cybersecurity, AI and Maps services for small and medium businesses in Vernon, BC. Expert security assessments, compliance consulting, and incident response.',
   keywords: 'cybersecurity, GIS, Maps, GPT, Claude, AI integration, Vernon BC, small business security, compliance, cyber safety, data protection',
-  authors: [{ name: 'Vernon Cyber Security Solutions' }],
+  authors: [{ name: 'Okanagan GeoTechSolutions' }],
   openGraph: {
-    title: 'Vernon Cyber Security Solutions',
+    title: 'Okanagan GeoTechSolutions',
     description: 'Protecting and empowering small and medium businesses in Vernon, BC with expert cybersecurity services.',
-    url: 'https://vernoncybersec.ca',
-    siteName: 'Vernon Cyber Security Solutions',
+    url: 'https://okanagantechgeo.ca',
+    siteName: 'Okanagan GeoTechSolutions',
     locale: 'en_CA',
     type: 'website',
   },
@@ -31,7 +31,7 @@ export default function RootLayout({
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-              Vernon Cyber TechSolutions
+              Okanagan GeoTechSolutions
             </h1>
             <p className="text-lg text-center mb-12">
 Complete technology solutions for home offices to medium businesses. Security, AI APIs, Interactive Maps, and custom development tailored to your needs.            </p>
@@ -46,7 +46,7 @@ Complete technology solutions for home offices to medium businesses. Security, A
         <footer className="bg-gray-100 text-gray-700 py-8 mt-12">
           <div className="container mx-auto text-center">
             <p className="text-sm">
-              © {new Date().getFullYear()} Vernon Cyber Security Solutions. All rights reserved.
+              © {new Date().getFullYear()} Okanagan GeoTechSolutions. All rights reserved.
             </p>
             <p className="text-xs mt-2">
               Built with Next.js and Tailwind CSS

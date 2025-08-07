@@ -1,8 +1,8 @@
-# API Reference - Vernon Cyber Security Solutions
+# API Reference - Okanagan GeoTechSolutions
 
 ## Base URL
 - Development: `http://localhost:3001`
-- Production: `https://api.vernoncybersec.ca`
+- Production: `https://api.okanagantechgeo.ca`
 
 ## Authentication
 
@@ -299,7 +299,7 @@ List active testimonials.
       "name": "Sarah Johnson",
       "company": "Vernon Medical Clinic",
       "position": "Practice Manager",
-      "content": "Vernon Cyber Security Solutions helped us implement PIPEDA compliance and secure our patient data. Their expertise is invaluable.",
+      "content": "Okanagan GeoTechSolutions helped us implement PIPEDA compliance and secure our patient data. Their expertise is invaluable.",
       "rating": 5,
       "isActive": true
     }
@@ -347,7 +347,7 @@ All API endpoints return consistent error responses:
 
 The API allows requests from:
 - `http://localhost:3000` (development)
-- `https://vernoncybersec.ca` (production)
+- `https://okanagantechgeo.ca` (production)
 
 ## Data Validation
 
@@ -365,4 +365,4 @@ For advanced integrations, webhooks are available for:
 - Assessment status changes
 - User registrations
 
-Contact support@vernoncybersec.ca for webhook configuration.
+Contact support@okanagantechgeo.ca for webhook configuration.

@@ -281,7 +281,7 @@ export const Contact: React.FC = () => {
                       </div>
                       <div>
                         <div className="text-white font-semibold">Secure Communications</div>
-                        <div className="text-gray-400">contact@vernoncybersec.ca</div>
+                        <div className="text-gray-400">contact@okanagantechgeo.ca</div>
                       </div>
                     </div>
                   </div>

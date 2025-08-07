@@ -206,7 +206,7 @@ export default function Home() {
               <div className="space-y-2 text-sm text-slate-600">
                 <p>Vernon, BC, Canada</p>
                 <p>+1 (250) 555-0123</p>
-                <p>contact@vernoncybersec.ca</p>
+                <p>contact@okanagantechgeo.ca</p>
               </div>
             </div>
           </div>

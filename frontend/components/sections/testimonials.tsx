@@ -4,7 +4,7 @@ const testimonials = [
   {
     name: "Jane Smith",
     company: "Okanagan Retailers",
-    quote: "Vernon Cyber Security Solutions helped us pass our compliance audit with ease! Highly recommended.",
+    quote: "Okanagan GeoTechSolutions helped us pass our compliance audit with ease! Highly recommended.",
   },
   {
     name: "Mike Brown",
