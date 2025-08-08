@@ -52,7 +52,10 @@ const Services = () => {
     setFinalSolution(null);
 
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 100, behavior: 'smooth' });
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     if (simulatorData[serviceId]) {

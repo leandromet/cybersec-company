@@ -39,11 +39,9 @@ export const Navbar: React.FC = () => {
             </div>
             <div className="block min-w-0">
               <div className="text-sm sm:text-lg md:text-xl font-bold text-black truncate">
-                Vernon CyberSec
+                Okanagan GeoTech
               </div>
-              <div className="text-xs text-neutral-500 tracking-wider hidden sm:block">
-                NEXT-GEN SECURITY
-              </div>
+
             </div>
           </div>
 
@@ -58,18 +56,48 @@ export const Navbar: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="group relative px-2 py-1.5 rounded-lg text-black hover:bg-neutral-100 transition-all duration-300"
+                style={{
+                  position: 'relative',
+                  padding: '6px 8px',
+                  borderRadius: '8px',
+                  color: '#000000',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  outline: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = '#f5f5f5';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = 'transparent';
+                }}
               >
-                <div className="flex flex-col items-center space-y-1">
-                  <span className="text-xs">{item.icon}</span>
-                  <span className="font-medium text-xs">{item.name}</span>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}>
+                  <span style={{ fontSize: '12px' }}>{item.icon}</span>
+                  <span style={{ fontWeight: '500', fontSize: '12px' }}>{item.name}</span>
                 </div>
               </button>
             ))}
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 bg-white rounded-full px-6 py-3 border border-neutral-200 shadow-sm">
+          <div style={{
+            display: 'none',
+            alignItems: 'center',
+            gap: '4px',
+            backgroundColor: 'white',
+            borderRadius: '50px',
+            padding: '12px 24px',
+            border: '1px solid #e5e5e5',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+          }} className="lg:flex">
             {[
               { name: 'About', id: 'about', icon: '🛡️' },
               { name: 'Services', id: 'services', icon: '⚡' },
@@ -79,49 +107,140 @@ export const Navbar: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="group relative px-4 py-2 rounded-full text-black hover:bg-neutral-100 transition-all duration-300 overflow-hidden"
+                style={{
+                  position: 'relative',
+                  padding: '8px 16px',
+                  borderRadius: '50px',
+                  color: '#000000',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  outline: 'none',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = '#f5f5f5';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = 'transparent';
+                }}
               >
-                <div className="relative flex items-center space-x-2 z-10">
-                  <span className="text-sm">{item.icon}</span>
-                  <span className="font-medium text-sm">{item.name}</span>
+                <div style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  zIndex: 10
+                }}>
+                  <span style={{ fontSize: '14px' }}>{item.icon}</span>
+                  <span style={{ fontWeight: '500', fontSize: '14px' }}>{item.name}</span>
                 </div>
               </button>
             ))}
-          </div>
           </div>
 
           {/* Mobile-Optimized Controls */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* CTA Button - Hidden on small mobile, visible on larger screens */}
             <button
-              onClick={() => scrollToSection('contact')}
-              className="hidden sm:flex items-center space-x-1 sm:space-x-2 bg-indigo-600 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-semibold text-xs sm:text-sm hover:shadow-lg hover:bg-indigo-700 transition-all duration-300 hover:scale-105"
+              onClick={() => scrollToSection('services')}
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                gap: '4px',
+                backgroundColor: '#4f46e5',
+                color: 'white',
+                padding: '8px 16px',
+                borderRadius: '50px',
+                fontWeight: '600',
+                fontSize: '14px',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                outline: 'none',
+                boxShadow: '0 4px 6px rgba(79, 70, 229, 0.3)'
+              }}
+              className="sm:flex"
+              onMouseEnter={(e) => {
+                const target = e.target as HTMLButtonElement;
+                target.style.backgroundColor = '#4338ca';
+                target.style.boxShadow = '0 6px 12px rgba(79, 70, 229, 0.4)';
+                target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                const target = e.target as HTMLButtonElement;
+                target.style.backgroundColor = '#4f46e5';
+                target.style.boxShadow = '0 4px 6px rgba(79, 70, 229, 0.3)';
+                target.style.transform = 'scale(1)';
+              }}
             >
-              <span className="hidden sm:inline">Get Secured</span>
-              <span className="sm:hidden">Secure</span>
-              <span className="text-sm sm:text-lg">🚀</span>
+              <span style={{ display: 'none' }} className="sm:inline">Get Started</span>
+              <span style={{ fontSize: '16px' }}>🚀</span>
             </button>
             
             {/* Mobile Menu Button - Improved touch target */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:lg:hidden relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-neutral-100 transition-all duration-300 touch-manipulation"
+              style={{
+                position: 'relative',
+                width: '44px',
+                height: '44px',
+                borderRadius: '50px',
+                backgroundColor: 'white',
+                border: '1px solid #e5e5e5',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                outline: 'none'
+              }}
+              className="md:hidden"
+              onMouseEnter={(e) => {
+                (e.target as HTMLButtonElement).style.backgroundColor = '#f5f5f5';
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLButtonElement).style.backgroundColor = 'white';
+              }}
               aria-label="Toggle mobile menu"
             >
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center items-center">
-                <span className={`h-0.5 w-4 sm:w-5 md:w-6 bg-indigo-600 rounded-full transition-all duration-300 ${
-                  isOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'
-                }`}></span>
-                <span className={`h-0.5 w-4 sm:w-5 md:w-6 bg-indigo-600 rounded-full transition-all duration-300 my-0.5 sm:my-1 ${
-                  isOpen ? 'opacity-0' : 'opacity-100'
-                }`}></span>
-                <span className={`h-0.5 w-4 sm:w-5 md:w-6 bg-indigo-600 rounded-full transition-all duration-300 ${
-                  isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'
-                }`}></span>
+              <div style={{
+                width: '20px',
+                height: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <span style={{
+                  height: '2px',
+                  width: '20px',
+                  backgroundColor: '#4f46e5',
+                  borderRadius: '2px',
+                  transition: 'all 0.3s ease',
+                  transform: isOpen ? 'rotate(45deg) translateY(4px)' : 'translateY(-4px)'
+                }}></span>
+                <span style={{
+                  height: '2px',
+                  width: '20px',
+                  backgroundColor: '#4f46e5',
+                  borderRadius: '2px',
+                  transition: 'all 0.3s ease',
+                  margin: '2px 0',
+                  opacity: isOpen ? 0 : 1
+                }}></span>
+                <span style={{
+                  height: '2px',
+                  width: '20px',
+                  backgroundColor: '#4f46e5',
+                  borderRadius: '2px',
+                  transition: 'all 0.3s ease',
+                  transform: isOpen ? 'rotate(-45deg) translateY(-4px)' : 'translateY(4px)'
+                }}></span>
               </div>
             </button>
           </div>
-        {/* End flex items-center justify-between */}
         </div>
 
         {/* Mobile Dropdown Menu Overlay */}
@@ -146,35 +265,106 @@ export const Navbar: React.FC = () => {
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className={`group w-full text-left p-3 sm:p-4 rounded-lg md:rounded-xl transition-all duration-300 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 text-black touch-manipulation min-h-[60px] sm:min-h-[70px]`}
-                      style={{ animationDelay: `${index * 50}ms` }}
+                      style={{
+                        width: '100%',
+                        textAlign: 'left',
+                        padding: '16px',
+                        borderRadius: '12px',
+                        transition: 'all 0.3s ease',
+                        backgroundColor: 'transparent',
+                        border: '1px solid transparent',
+                        color: '#000000',
+                        cursor: 'pointer',
+                        outline: 'none',
+                        minHeight: '70px',
+                        animationDelay: `${index * 50}ms`
+                      }}
+                      onMouseEnter={(e) => {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.backgroundColor = '#f5f5f5';
+                        target.style.borderColor = '#e5e5e5';
+                      }}
+                      onMouseLeave={(e) => {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.backgroundColor = 'transparent';
+                        target.style.borderColor = 'transparent';
+                      }}
                     >
-                      <div className="flex items-center space-x-3 sm:space-x-4">
-                        <div className="flex-shrink-0">
-                          <span className="text-xl sm:text-2xl">{item.icon}</span>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px'
+                      }}>
+                        <div style={{ flexShrink: 0 }}>
+                          <span style={{ fontSize: '24px' }}>{item.icon}</span>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-black text-sm sm:text-base">
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{
+                            fontWeight: '600',
+                            color: '#000000',
+                            fontSize: '16px'
+                          }}>
                             {item.name}
                           </div>
-                          <div className="text-xs sm:text-sm text-neutral-500 mt-0.5">
+                          <div style={{
+                            fontSize: '14px',
+                            color: '#6b7280',
+                            marginTop: '2px'
+                          }}>
                             {item.desc}
                           </div>
                         </div>
-                        <div className="flex-shrink-0">
-                          <span className="text-neutral-400 group-hover:text-indigo-600 transition-colors text-sm">→</span>
+                        <div style={{ flexShrink: 0 }}>
+                          <span style={{
+                            color: '#9ca3af',
+                            fontSize: '14px',
+                            transition: 'color 0.3s ease'
+                          }}>→</span>
                         </div>
                       </div>
                     </button>
                   ))}
                   {/* Mobile CTA - Enhanced */}
-                  <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-neutral-200">
+                  <div style={{
+                    paddingTop: '12px',
+                    marginTop: '12px',
+                    borderTop: '1px solid #e5e5e5'
+                  }}>
                     <button
-                      onClick={() => scrollToSection('contact')}
-                      className="w-full bg-indigo-600 text-white p-3 sm:p-4 rounded-lg md:rounded-xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg hover:bg-indigo-700 transition-all duration-300 hover:scale-[1.02] touch-manipulation min-h-[50px] sm:min-h-[60px]"
+                      onClick={() => scrollToSection('services')}
+                      style={{
+                        width: '100%',
+                        backgroundColor: '#4f46e5',
+                        color: 'white',
+                        padding: '16px',
+                        borderRadius: '12px',
+                        fontWeight: '600',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        outline: 'none',
+                        minHeight: '60px',
+                        boxShadow: '0 4px 6px rgba(79, 70, 229, 0.3)'
+                      }}
+                      onMouseEnter={(e) => {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.backgroundColor = '#4338ca';
+                        target.style.boxShadow = '0 6px 12px rgba(79, 70, 229, 0.4)';
+                        target.style.transform = 'scale(1.02)';
+                      }}
+                      onMouseLeave={(e) => {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.backgroundColor = '#4f46e5';
+                        target.style.boxShadow = '0 4px 6px rgba(79, 70, 229, 0.3)';
+                        target.style.transform = 'scale(1)';
+                      }}
                     >
-                      <span className="text-sm sm:text-base">Get Secured Now</span>
-                      <span className="text-base sm:text-lg">🚀</span>
+                      <span style={{ fontSize: '16px' }}>Get Started Now</span>
+                      <span style={{ fontSize: '18px' }}>🚀</span>
                     </button>
                   </div>
                 </div>
@@ -191,8 +381,8 @@ export const Navbar: React.FC = () => {
             `}</style>
           </>
         )}
+      </div>
     </nav>
   );
 };
 export default Navbar;
-

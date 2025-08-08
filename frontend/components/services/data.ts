@@ -1,6 +1,39 @@
 import { Service, SimulatorData } from './types';
 
 export const services: Service[] = [
+ 
+  {
+    id: "gis-mapping",
+    title: "GIS & Interactive Maps",
+    description:
+      "Geospatial solutions, custom mapping applications, and location-based services for data visualization.",
+    icon: "🗺️",
+    features: [
+      "Custom Map Applications",
+      "Location Analytics",
+      "Spatial Data Visualization",
+      "Mobile GIS",
+    ],
+    price: "From $199/month",
+    timeline: "3-6 weeks",
+    category: "analytics",
+  },
+  {
+    id: "geoprocessing",
+    title: "Geoprocessing & Spatial Analysis",
+    description:
+      "Advanced spatial analysis services including land use classification, risk assessment, and geostatistical modeling for informed decision-making.",
+    icon: "🌍",
+    features: [
+      "Land Use Classification",
+      "Risk Assessment Modeling",
+      "Spatial Database Management",
+      "Geostatistical Analysis",
+    ],
+    price: "From $299/month",
+    timeline: "2-8 weeks",
+    category: "analytics",
+  },
   {
     id: "it-security",
     title: "IT Security & Management",
@@ -33,22 +66,7 @@ export const services: Service[] = [
     timeline: "2-4 weeks",
     category: "ai",
   },
-  {
-    id: "gis-mapping",
-    title: "GIS & Interactive Maps",
-    description:
-      "Geospatial solutions, custom mapping applications, and location-based services for data visualization.",
-    icon: "🗺️",
-    features: [
-      "Custom Map Applications",
-      "Location Analytics",
-      "Spatial Data Visualization",
-      "Mobile GIS",
-    ],
-    price: "From $399/month",
-    timeline: "3-6 weeks",
-    category: "analytics",
-  },
+  
   {
     id: "custom-development",
     title: "Custom Development",
@@ -143,6 +161,90 @@ export const simulatorData: SimulatorData = {
           },
         ],
       },
+      "retail-size": {
+        id: "retail-size",
+        question: "How many locations do you have?",
+        options: [
+          {
+            label: "Single Location",
+            value: "single",
+            solution: {
+              title: "Retail Security Package",
+              description: "Comprehensive security for retail stores with POS protection and customer data security.",
+              features: ["POS Security", "Customer Data Protection", "WiFi Security", "Payment Compliance", "24/7 Monitoring"],
+              price: "$299/month",
+              timeline: "2 weeks setup",
+            },
+          },
+          {
+            label: "Multiple Locations",
+            value: "multiple",
+            solution: {
+              title: "Multi-Store Security Suite",
+              description: "Enterprise-grade security for retail chains with centralized management and monitoring.",
+              features: ["Centralized Management", "Multi-location Monitoring", "Advanced Threat Detection", "Compliance Reporting", "Priority Support"],
+              price: "$599/month",
+              timeline: "3-4 weeks setup",
+            },
+          },
+        ],
+      },
+      "office-size": {
+        id: "office-size",
+        question: "How many employees work in your office?",
+        options: [
+          {
+            label: "10-50 employees",
+            value: "medium",
+            solution: {
+              title: "Corporate Security Standard",
+              description: "Professional security suite for medium-sized offices with employee management and network protection.",
+              features: ["Network Security", "Employee Access Control", "Email Security", "Data Loss Prevention", "Compliance Support"],
+              price: "$449/month",
+              timeline: "2-3 weeks setup",
+            },
+          },
+          {
+            label: "50+ employees",
+            value: "large",
+            solution: {
+              title: "Enterprise Security Platform",
+              description: "Full enterprise security solution with advanced threat protection and compliance management.",
+              features: ["Advanced Threat Protection", "Identity Management", "Security Operations Center", "Compliance Automation", "24/7 Support"],
+              price: "$999/month",
+              timeline: "4-6 weeks setup",
+            },
+          },
+        ],
+      },
+      "manufacturing-size": {
+        id: "manufacturing-size",
+        question: "What's the scale of your manufacturing operation?",
+        options: [
+          {
+            label: "Small Manufacturing (1-25 employees)",
+            value: "small",
+            solution: {
+              title: "Industrial Security Basic",
+              description: "Essential security for small manufacturing with industrial system protection and basic monitoring.",
+              features: ["Industrial Network Security", "Equipment Protection", "Basic Monitoring", "Backup Systems", "Remote Support"],
+              price: "$399/month",
+              timeline: "2-3 weeks setup",
+            },
+          },
+          {
+            label: "Large Manufacturing (25+ employees)",
+            value: "large",
+            solution: {
+              title: "Industrial Security Enterprise",
+              description: "Comprehensive security for large manufacturing with OT/IT integration and advanced threat detection.",
+              features: ["OT/IT Network Segmentation", "Advanced Threat Detection", "Industrial Compliance", "Real-time Monitoring", "On-site Support"],
+              price: "$1,499/month",
+              timeline: "6-8 weeks setup",
+            },
+          },
+        ],
+      },
     },
   },
   "ai-integration": {
@@ -229,6 +331,51 @@ export const simulatorData: SimulatorData = {
               features: ["Custom Map Applications", "Spatial Analysis Tools", "Data Integration", "Advanced Reporting", "API Access"],
               price: "$1,299/month",
               timeline: "6-8 weeks",
+            },
+          },
+        ],
+      },
+    },
+  },
+  "geoprocessing": {
+    title: "Geoprocessing & Spatial Analysis Finder",
+    description: "Find the right geoprocessing solution for your spatial analysis and modeling needs.",
+    startNode: "geoprocessing-type",
+    nodes: {
+      "geoprocessing-type": {
+        id: "geoprocessing-type",
+        question: "What type of spatial analysis do you need?",
+        options: [
+          { label: "Land Use Classification", value: "land-use", nextNode: "geoprocessing-scale" },
+          { label: "Risk Assessment Modeling", value: "risk-assessment", nextNode: "geoprocessing-scale" },
+          { label: "Environmental Analysis", value: "environmental", nextNode: "geoprocessing-scale" },
+          { label: "Urban Planning & Development", value: "urban-planning", nextNode: "geoprocessing-scale" },
+        ],
+      },
+      "geoprocessing-scale": {
+        id: "geoprocessing-scale",
+        question: "What's the scale of your project?",
+        options: [
+          {
+            label: "Local/Regional Analysis",
+            value: "local",
+            solution: {
+              title: "Regional Geoprocessing Package",
+              description: "Focused spatial analysis for local and regional projects with standard modeling techniques.",
+              features: ["Land Use Classification", "Basic Risk Modeling", "Environmental Assessment", "Standard Reporting"],
+              price: "$599/month",
+              timeline: "2-4 weeks",
+            },
+          },
+          {
+            label: "Large-Scale/Multi-Region Analysis",
+            value: "large-scale",
+            solution: {
+              title: "Enterprise Geoprocessing Suite",
+              description: "Advanced spatial analysis for large-scale projects with complex modeling and statistical analysis.",
+              features: ["Advanced Geostatistical Modeling", "Multi-criteria Analysis", "Predictive Modeling", "Custom Algorithms", "Detailed Reporting"],
+              price: "$1,599/month",
+              timeline: "6-12 weeks",
             },
           },
         ],

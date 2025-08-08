@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
 
             {/* Subtitle */}
             <p className={`text-base md:text-xl lg:text-2xl xl:text-3xl mb-12 md:mb-16 text-neutral-700 max-w-5xl mx-auto leading-relaxed font-light transition-all duration-1000 delay-1100 px-4 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-              Military-grade cybersecurity infrastructure protecting critical business operations with 
+              Technical solutions and cybersecurity infrastructure protecting critical business operations with 
               <span className="text-indigo-600 font-medium"> quantum-resistant protocols</span>, 
               <span className="text-indigo-500 font-medium"> AI-driven threat detection</span>, and 
               <span className="text-indigo-400 font-medium"> zero-trust architecture</span>
