@@ -51,6 +51,10 @@ const Services = () => {
     setSelections({});
     setFinalSolution(null);
 
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    }
+
     if (simulatorData[serviceId]) {
       setCurrentNode(simulatorData[serviceId].startNode);
     } else {
@@ -92,23 +96,6 @@ const Services = () => {
         className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-12 md:py-20"
       >
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight px-4">
-              Our Technology Solutions
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-              From cybersecurity to AI integration, we provide comprehensive
-              technology solutions tailored for businesses of all sizes - from
-              home offices to medium enterprises.
-            </p>
-            <div className="mt-8 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-200 max-w-2xl mx-auto">
-              <p className="text-base md:text-lg text-purple-800 font-medium text-center">
-                💡 Hover over any service to see details • Click "🚀 Find" to explore solutions
-              </p>
-            </div>
-          </div>
-
            {/* Simulator Modal */}
       {expandedService && (
         <Modal
@@ -146,6 +133,26 @@ const Services = () => {
           onClose={resetSimulator}
         />
       )}
+
+
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight px-4">
+              Our Technology Solutions
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6"></div>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
+              From cybersecurity to AI integration, we provide comprehensive
+              technology solutions tailored for businesses of all sizes - from
+              home offices to medium enterprises.
+            </p>
+            <div className="mt-8 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-200 max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-purple-800 font-medium text-center">
+                💡 Hover over any service to see details • Click "🚀 Find" to explore solutions
+              </p>
+            </div>
+          </div>
+
+          
 
           {/* Services Grid - Simple Layout */}
           <div className="mb-20">
@@ -249,30 +256,39 @@ const Services = () => {
               <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed px-4">
                 Connect with our technology specialists for a comprehensive consultation
               </p>
-              <button
-                onClick={() =>
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="relative overflow-hidden text-white font-bold px-8 py-3 md:px-12 md:py-4 rounded-full text-base md:text-lg border-none cursor-pointer transition-all duration-500 transform scale-100 hover:scale-110"
-                style={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
-                  boxShadow: '0 20px 40px rgba(102, 126, 234, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)'
-                }}
-              >
-                <div className="relative flex items-center gap-2 md:gap-3 z-10">
+                <button
+                  onClick={() =>
+                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  style={{
+                    background: 'linear-gradient(to right, #111827, #e5e7eb)', // black to light gray
+                    color: 'white',
+                    padding: '16px 32px',
+                    borderRadius: '16px',
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = 'linear-gradient(to right, #e5e7eb, #111827)'; // reverse on hover
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.18)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = 'linear-gradient(to right, #111827, #e5e7eb)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                  type="button"
+                >
                   <span>🚀 Start Your Transformation</span>
-                  <div 
-                    className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-transform duration-300"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.25)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)'
-                    }}
-                  >
-                    <span className="text-base md:text-lg">✨</span>
-                  </div>
-                </div>
-              </button>
+                </button>
             </div>
           </div>
         </div>

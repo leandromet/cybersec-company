@@ -798,14 +798,10 @@ const Services = () => {
             </p>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative overflow-hidden bg-indigo-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-300 hover:scale-110 hover:shadow-xl hover:bg-indigo-700"
+              className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center space-x-2"
             >
-              <div className="relative flex items-center space-x-3">
-                <span>Start Your Transformation</span>
-                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-sm">🚀</span>
-                </div>
-              </div>
+              <span>Start Your Transformation</span>
+              <span className="text-lg">🚀</span>
             </button>
           </div>
         </div>
