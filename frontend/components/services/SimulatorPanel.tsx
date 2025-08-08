@@ -45,7 +45,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
         style={{
           padding: '24px',
           borderBottom: '1px solid #f3f4f6',
-          background: 'linear-gradient(to right, #eef2ff, #faf5ff)'
+          background: 'linear-gradient(to right, #f0fdf4, #ecfdf5)'
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
@@ -102,7 +102,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
             <div
               style={{
                 height: '100%',
-                background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                background: 'linear-gradient(to right, rgb(4, 140, 87), rgb(15, 118, 110))',
                 borderRadius: '9999px',
                 transition: 'all 0.7s ease-out',
                 width: `${progressPercentage}%`
@@ -144,17 +144,17 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                     transition: 'all 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#a5b4fc';
-                    e.currentTarget.style.background = 'linear-gradient(to right, #eef2ff, #faf5ff)';
+                    e.currentTarget.style.borderColor = 'rgb(134, 239, 172)';
+                    e.currentTarget.style.background = 'linear-gradient(to right, #f0fdf4, #ecfdf5)';
                     const arrow = e.currentTarget.querySelector('.arrow-icon') as HTMLElement;
                     const text = e.currentTarget.querySelector('.option-text') as HTMLElement;
                     if (arrow) {
-                      arrow.style.borderColor = '#6366f1';
-                      arrow.style.backgroundColor = '#6366f1';
+                      arrow.style.borderColor = 'rgb(4, 140, 87)';
+                      arrow.style.backgroundColor = 'rgb(4, 140, 87)';
                       arrow.style.color = 'white';
                     }
                     if (text) {
-                      text.style.color = '#4338ca';
+                      text.style.color = 'rgb(3, 102, 63)';
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -217,13 +217,13 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                   width: '56px',
                   minWidth: '56px',
                   height: '56px',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  background: 'linear-gradient(135deg, rgb(4, 140, 87), rgb(15, 118, 110))',
                   borderRadius: '20%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '24px',
-                  boxShadow: '0 10px 25px rgba(16, 185, 129, 0.3)'
+                  boxShadow: '0 10px 25px rgba(4, 140, 87, 0.3)'
                 }}
               >
                 <span style={{ fontSize: '32px', color: 'white' }}>✓</span>
@@ -244,7 +244,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                   style={{
                     width: '64px',
                     height: '4px',
-                    background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                    background: 'linear-gradient(to right, rgb(4, 140, 87), rgb(15, 118, 110))',
                     margin: '8px 0'
                   }}
                 />
@@ -253,10 +253,10 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
 
             <div 
               style={{
-                background: 'linear-gradient(135deg, #eef2ff, #faf5ff, #eff6ff)',
+                background: 'linear-gradient(135deg, #f0fdf4, #ecfdf5, #f7fee7)',
                 borderRadius: '12px',
                 padding: '24px',
-                border: '1px solid #c7d2fe'
+                border: '1px solid rgb(134, 239, 172)'
               }}
             >
               <h5 
@@ -301,7 +301,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                       style={{
                         width: '20px',
                         height: '20px',
-                        backgroundColor: '#6366f1',
+                        backgroundColor: 'rgb(4, 140, 87)',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
@@ -320,7 +320,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                           style={{
                             width: '8px',
                             height: '8px',
-                            background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                            background: 'linear-gradient(to right, rgb(4, 140, 87), rgb(15, 118, 110))',
                             borderRadius: '50%',
                             marginRight: '8px'
                           }}
@@ -339,7 +339,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                       padding: '16px',
                       backgroundColor: 'white',
                       borderRadius: '12px',
-                      border: '1px solid #c7d2fe'
+                      border: '1px solid rgb(134, 239, 172)'
                     }}
                   >
                     <h6 
@@ -350,13 +350,13 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                         fontSize: '14px'
                       }}
                     >
-                      Investment:
+                      Investment from:
                     </h6>
                     <p 
                       style={{
                         fontSize: '24px',
                         fontWeight: 'bold',
-                        color: '#6366f1',
+                        color: 'rgb(4, 140, 87)',
                         margin: 0
                       }}
                     >
@@ -379,7 +379,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                         fontSize: '14px'
                       }}
                     >
-                      Timeline:
+                      Timeline expectation:
                     </h6>
                     <p 
                       style={{
@@ -404,7 +404,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                   }}
                   style={{
                     flex: 1,
-                    background: 'linear-gradient(to right, #4f46e5, #7c3aed)',
+                    background: 'linear-gradient(to right, rgb(4, 140, 87), rgb(15, 118, 110))',
                     color: 'white',
                     fontWeight: 'bold',
                     padding: '12px 24px',
@@ -412,14 +412,14 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
-                    boxShadow: '0 10px 25px rgba(79, 70, 229, 0.3)'
+                    boxShadow: '0 10px 25px rgba(4, 140, 87, 0.3)'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(to right, #4338ca, #6d28d9)';
+                    e.currentTarget.style.background = 'linear-gradient(to right, rgb(3, 120, 75), rgb(12, 100, 95))';
                     e.currentTarget.style.transform = 'scale(1.05)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(to right, #4f46e5, #7c3aed)';
+                    e.currentTarget.style.background = 'linear-gradient(to right, rgb(4, 140, 87), rgb(15, 118, 110))';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
@@ -479,7 +479,7 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                 style={{
                   width: '20px',
                   height: '20px',
-                  backgroundColor: '#6366f1',
+                  backgroundColor: 'rgb(4, 140, 87)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -497,12 +497,12 @@ const SimulatorPanel: React.FC<SimulatorPanelProps> = ({
                   key={key}
                   style={{
                     padding: '4px 12px',
-                    background: 'linear-gradient(to right, #ddd6fe, #e0e7ff)',
-                    color: '#4338ca',
+                    background: 'linear-gradient(to right, #dcfce7, #f0fdf4)',
+                    color: 'rgb(3, 102, 63)',
                     borderRadius: '9999px',
                     fontSize: '12px',
                     fontWeight: '500',
-                    border: '1px solid #c7d2fe'
+                    border: '1px solid rgb(134, 239, 172)'
                   }}
                 >
                   {value}
