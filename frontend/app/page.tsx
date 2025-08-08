@@ -29,63 +29,176 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(to bottom, #ffffff, #f9fafb)'
+    }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative">
-        {/* Subtle Background Effects */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.1) 0%, transparent 50%)`
+      <section id="hero" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        background: 'linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f3f4f6 100%)'
+      }}>
+        {/* Professional Background Effects */}
+        <div style={{
+          position: 'absolute',
+          inset: '0',
+          opacity: '0.6'
+        }}>
+          <div style={{
+            position: 'absolute',
+            inset: '0',
+            backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(5, 150, 105, 0.08) 0%, transparent 50%)`
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            left: '10%',
+            width: '200px',
+            height: '200px',
+            background: 'radial-gradient(circle, rgba(5, 150, 105, 0.05) 0%, transparent 70%)',
+            borderRadius: '50%'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            bottom: '30%',
+            right: '15%',
+            width: '150px',
+            height: '150px',
+            background: 'radial-gradient(circle, rgba(13, 148, 136, 0.05) 0%, transparent 70%)',
+            borderRadius: '50%'
           }}></div>
         </div>
         
         {/* Hero Content */}
-        <div className="max-w-6xl mx-auto text-center relative z-10 px-8">
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          textAlign: 'center',
+          position: 'relative',
+          zIndex: '10',
+          padding: '0 32px'
+        }}>
+          <div style={{
+            transition: 'all 1s ease',
+            opacity: isVisible ? '1' : '0',
+            transform: isVisible ? 'translateY(0)' : 'translateY(32px)'
+          }}>
             
-            {/* Minimal Badge */}
-            <div className="inline-flex items-center space-x-3 border border-slate-300 bg-white/5 backdrop-blur-sm px-6 py-2 mb-16 text-sm tracking-wider text-slate-600">
-              <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
-              <span>ENTERPRISE SECURITY</span>
-              <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
+            {/* Professional Badge */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              border: '1px solid #d1d5db',
+              background: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(8px)',
+              padding: '12px 24px',
+              marginBottom: '64px',
+              fontSize: '14px',
+              letterSpacing: '0.1em',
+              color: '#4b5563',
+              borderRadius: '9999px',
+              fontWeight: '500'
+            }}>
+              <div style={{
+                width: '8px',
+                height: '8px',
+                background: '#059669',
+                borderRadius: '50%'
+              }}></div>
+              <span>GIS & TECHNOLOGY SOLUTIONS</span>
+              <div style={{
+                width: '8px',
+                height: '8px',
+                background: '#059669',
+                borderRadius: '50%'
+              }}></div>
             </div>
 
-            {/* Clean Typography */}
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-light mb-8 tracking-[-0.02em] leading-[0.85]">
-              <span className="block text-slate-900 mb-4">Okanagan</span>
-              <span className="block text-blue-600 font-medium">GeoTechSolutions</span>
+            {/* Professional Typography */}
+            <h1 style={{
+              fontSize: 'clamp(3rem, 8vw, 6rem)',
+              fontWeight: '300',
+              marginBottom: '32px',
+              letterSpacing: '-0.02em',
+              lineHeight: '0.9'
+            }}>
+              <span style={{
+                display: 'block',
+                color: '#111827',
+                marginBottom: '16px'
+              }}>Okanagan</span>
+              <span style={{
+                display: 'block',
+                color: '#059669',
+                fontWeight: '600'
+              }}>GeoTech</span>
             </h1>
             
-            <div className="w-24 h-px bg-slate-300 mx-auto mb-12"></div>
+            <div style={{
+              width: '96px',
+              height: '2px',
+              background: '#d1d5db',
+              margin: '0 auto 48px'
+            }}></div>
             
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light mb-16">
-              Advanced solutions designed for modern enterprises requiring
-              <span className="text-slate-900"> military-grade protection</span> and 
-              <span className="text-slate-900"> zero-compromise security</span>
+            <p style={{
+              fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+              color: '#4b5563',
+              maxWidth: '768px',
+              margin: '0 auto',
+              lineHeight: '1.7',
+              fontWeight: '300',
+              marginBottom: '64px'
+            }}>
+              Digital security, Advanced GIS mapping and spatial analysis solutions for the Okanagan Valley, providing
+              <span style={{ color: '#111827', fontWeight: '500' }}> precise geospatial intelligence</span> and
+              <span style={{ color: '#111827', fontWeight: '500' }}> comprehensive technology services</span>
             </p>
 
-            {/* Minimal Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto">
+            {/* Professional Stats Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: '48px',
+              maxWidth: '1024px',
+              margin: '0 auto'
+            }}>
               {[
-                { value: '99.99%', label: 'Uptime' },
-                { value: '<50ms', label: 'Response' },
-                { value: '24/7', label: 'Monitoring' },
-                { value: 'AES-256', label: 'Encryption' }
+                { value: '20+', label: 'Projects Completed' },
+                { value: '<24h', label: 'Response Time' },
+                { value: '99.9%', label: 'Accuracy Rate' },
+                { value: '15+', label: 'Experienced Professionals' }
               ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl font-light text-slate-900 mb-2">{stat.value}</div>
-                  <div className="text-sm text-slate-500 uppercase tracking-wider">{stat.label}</div>
+                <div key={index} style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontSize: '36px',
+                    fontWeight: '300',
+                    color: '#111827',
+                    marginBottom: '8px'
+                  }}>{stat.value}</div>
+                  <div style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    fontWeight: '500'
+                  }}>{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            {/* CTA Buttons */}
+            {/* Professional CTA Buttons */}
             <div style={{
               display: 'flex',
               flexDirection: 'row',
-              gap: '16px',
+              gap: '20px',
               justifyContent: 'center',
               marginTop: '64px',
               flexWrap: 'wrap'
@@ -94,47 +207,72 @@ export default function Home() {
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{
                   padding: '16px 32px',
-                  backgroundColor: '#2563eb',
+                  background: 'linear-gradient(to right, #059669, #0d9488)',
                   color: 'white',
-                  borderRadius: '8px',
-                  fontSize: '18px',
+                  borderRadius: '12px',
+                  fontSize: '16px',
                   fontWeight: '600',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'background-color 0.3s ease',
+                  transition: 'all 0.3s ease',
                   outline: 'none',
-                  minWidth: '150px'
+                  minWidth: '180px',
+                  boxShadow: '0 8px 16px rgba(5, 150, 105, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
                 }}
-                onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#1d4ed8'}
-                onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2563eb'}
+                onMouseEnter={(e) => {
+                  const target = e.target as HTMLButtonElement;
+                  target.style.background = 'linear-gradient(to right, #047857, #0f766e)';
+                  target.style.transform = 'translateY(-2px)';
+                  target.style.boxShadow = '0 12px 20px rgba(5, 150, 105, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.target as HTMLButtonElement;
+                  target.style.background = 'linear-gradient(to right, #059669, #0d9488)';
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 8px 16px rgba(5, 150, 105, 0.3)';
+                }}
               >
-                Get Started
+                <span>🗺️</span>
+                <span>Start Your Project</span>
               </button>
               <button 
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{
                   padding: '16px 32px',
-                  backgroundColor: 'transparent',
-                  color: '#2563eb',
-                  borderRadius: '8px',
-                  fontSize: '18px',
+                  background: 'transparent',
+                  color: '#059669',
+                  borderRadius: '12px',
+                  fontSize: '16px',
                   fontWeight: '600',
-                  border: '2px solid #60a5fa',
+                  border: '2px solid #059669',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
                   outline: 'none',
-                  minWidth: '150px'
+                  minWidth: '180px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
                 }}
                 onMouseEnter={(e) => {
                   const target = e.target as HTMLButtonElement;
-                  target.style.backgroundColor = 'rgba(96, 165, 250, 0.1)';
+                  target.style.background = 'rgba(5, 150, 105, 0.1)';
+                  target.style.transform = 'translateY(-2px)';
+                  target.style.boxShadow = '0 8px 16px rgba(5, 150, 105, 0.2)';
                 }}
                 onMouseLeave={(e) => {
                   const target = e.target as HTMLButtonElement;
-                  target.style.backgroundColor = 'transparent';
+                  target.style.background = 'transparent';
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = 'none';
                 }}
               >
-                Learn More
+                <span>🛠️</span>
+                <span>View Services</span>
               </button>
             </div>
           </div>
@@ -166,47 +304,135 @@ export default function Home() {
         <Contact />
       </section>
 
-      {/* Minimal Footer */}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="max-w-7xl mx-auto px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-6 h-6 bg-blue-600 flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white"></div>
+      {/* Professional Footer */}
+      <footer style={{
+        borderTop: '1px solid #e5e7eb',
+        background: 'white'
+      }}>
+        <div style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '64px 32px'
+        }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '48px'
+          }}>
+            <div style={{ gridColumn: 'span 2' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '24px'
+              }}>
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  background: '#059669',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '8px'
+                }}>
+                  <div style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'white',
+                    borderRadius: '2px'
+                  }}></div>
                 </div>
-                <span className="text-lg font-medium text-slate-900">Vernon CyberSec</span>
+                <span style={{
+                  fontSize: '20px',
+                  fontWeight: '600',
+                  color: '#111827'
+                }}>Okanagan GeoTech</span>
               </div>
-              <p className="text-slate-600 leading-relaxed max-w-md">
-                Advanced cybersecurity solutions for modern enterprises requiring military-grade protection.
+              <p style={{
+                color: '#4b5563',
+                lineHeight: '1.7',
+                maxWidth: '400px'
+              }}>
+                Professional GIS mapping, spatial analysis, and technology solutions 
+                for the Okanagan Valley and beyond. Empowering businesses with precise 
+                geospatial intelligence.
               </p>
             </div>
             
             <div>
-              <h4 className="font-medium text-slate-900 mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-slate-600">
-                <li>Threat Detection</li>
-                <li>Vulnerability Assessment</li>
-                <li>Incident Response</li>
-                <li>Compliance Consulting</li>
+              <h4 style={{
+                fontWeight: '600',
+                color: '#111827',
+                marginBottom: '16px'
+              }}>Services</h4>
+              <ul style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                fontSize: '14px',
+                color: '#4b5563'
+              }}>
+                <li>GIS Mapping & Analysis</li>
+                <li>Spatial Data Processing</li>
+                <li>IT Security & Management</li>
+                <li>Custom Development</li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-medium text-slate-900 mb-4">Contact</h4>
-              <div className="space-y-2 text-sm text-slate-600">
+              <h4 style={{
+                fontWeight: '600',
+                color: '#111827',
+                marginBottom: '16px'
+              }}>Contact</h4>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                fontSize: '14px',
+                color: '#4b5563'
+              }}>
                 <p>Vernon, BC, Canada</p>
-                <p>+1 (250) 555-0123</p>
+                <p>+1 (250) 555-TECH</p>
                 <p>contact@okanagantechgeo.ca</p>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-slate-200 mt-12 pt-8 flex items-center justify-between text-sm text-slate-500">
-            <p>© 2025 Vernon CyberSec. All rights reserved.</p>
-            <div className="flex items-center space-x-6">
-              <a href="#" className="hover:text-slate-700 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-slate-700 transition-colors">Terms</a>
+          <div style={{
+            borderTop: '1px solid #e5e7eb',
+            marginTop: '48px',
+            paddingTop: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: '14px',
+            color: '#6b7280',
+            flexWrap: 'wrap',
+            gap: '16px'
+          }}>
+            <p>© 2025 Okanagan GeoTech. All rights reserved.</p>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px'
+            }}>
+              <a href="#" style={{
+                color: '#6b7280',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.color = '#374151'}
+              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.color = '#6b7280'}
+              >Privacy</a>
+              <a href="#" style={{
+                color: '#6b7280',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.color = '#374151'}
+              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.color = '#6b7280'}
+              >Terms</a>
             </div>
           </div>
         </div>

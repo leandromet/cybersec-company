@@ -1,10 +1,10 @@
 import React from "react";
 
 const stats = [
-  { label: "Clients Protected", value: "120+", icon: "🛡️" },
-  { label: "Incidents Resolved", value: "350+", icon: "🚨" },
-  { label: "Years Experience", value: "15+", icon: "⭐" },
-  { label: "Compliance Audits", value: "80+", icon: "📋" },
+  { label: "Projects Completed", value: "50+", icon: "�️" },
+  { label: "Happy Clients", value: "40+", icon: "⭐" },
+  { label: "Years Experience", value: "5+", icon: "🛠️" },
+  { label: "Services Offered", value: "7+", icon: "�" },
 ];
 
 export const Stats: React.FC = () => (
@@ -12,10 +12,43 @@ export const Stats: React.FC = () => (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <div className="text-3xl mb-2">{stat.icon}</div>
-            <div className="text-3xl md:text-4xl font-bold text-blue-900 dark:text-blue-100 mb-2">{stat.value}</div>
-            <div className="text-blue-700 dark:text-blue-300 text-sm md:text-base font-medium">{stat.label}</div>
+          <div 
+            key={index} 
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              padding: '32px 24px',
+              textAlign: 'center',
+              transition: 'all 0.3s ease',
+              cursor: 'default'
+            }}
+            onMouseEnter={(e) => {
+              const target = e.currentTarget as HTMLDivElement;
+              target.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.15)';
+              target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              const target = e.currentTarget as HTMLDivElement;
+              target.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+              target.style.transform = 'scale(1)';
+            }}
+          >
+            <div style={{
+              fontSize: '48px',
+              marginBottom: '12px'
+            }}>{stat.icon}</div>
+            <div style={{
+              fontSize: '36px',
+              fontWeight: 'bold',
+              color: '#1e40af',
+              marginBottom: '8px'
+            }}>{stat.value}</div>
+            <div style={{
+              color: '#1d4ed8',
+              fontSize: '16px',
+              fontWeight: '500'
+            }}>{stat.label}</div>
           </div>
         ))}
       </div>

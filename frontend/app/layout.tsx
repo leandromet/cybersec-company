@@ -26,18 +26,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="light">
-      <body className={`${inter.className} bg-white text-black min-h-screen`}>
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-              Okanagan GeoTechSolutions
-            </h1>
-            <p className="text-lg text-center mb-12">
-Complete technology solutions for home offices to medium businesses. Security, AI APIs, Interactive Maps, and custom development tailored to your needs.            </p>
-          </div>
+    <html lang="en" suppressHydrationWarning style={{ colorScheme: 'light' }}>
+      <body className={`${inter.className}`} style={{ backgroundColor: 'white', color: 'black', minHeight: '100vh' }}>
+      {/* <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+        <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3rem)', fontWeight: 'bold', textAlign: 'center', marginBottom: '2rem' }}>
+          Okanagan GeoTechSolutions
+        </h1>
+        <p style={{ fontSize: '1.125rem', textAlign: 'center', marginBottom: '3rem' }}>
+          Complete technology solutions for home offices to medium businesses. Security, AI APIs, Interactive Maps, and custom development tailored to your needs.
+        </p>
         </div>
-        <div className="container mx-auto px-4">
+      </div> */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
   
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light">
           {children}

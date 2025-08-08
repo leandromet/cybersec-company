@@ -44,7 +44,13 @@ export const Testimonials: React.FC = () => (
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight">
             What Our Clients Say
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6"></div>
+          <div style={{
+            width: '96px',
+            height: '4px',
+            background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+            margin: '0 auto 24px auto',
+            borderRadius: '2px'
+          }}></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             Hear from the businesses we've helped grow with our technology solutions across Vernon and the Okanagan Valley
           </p>
@@ -53,36 +59,121 @@ export const Testimonials: React.FC = () => (
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={testimonial.name} className="group bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div 
+              key={testimonial.name} 
+              style={{
+                background: 'white',
+                borderRadius: '16px',
+                border: '1px solid #e5e7eb',
+                padding: '32px',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                cursor: 'default'
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLDivElement;
+                target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
+                target.style.transform = 'translateY(-4px)';
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLDivElement;
+                target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+                target.style.transform = 'translateY(0)';
+              }}
+            >
               {/* Rating Stars */}
-              <div className="flex items-center space-x-1 mb-4 md:mb-6">
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                marginBottom: '24px'
+              }}>
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-lg md:text-xl">⭐</span>
+                  <span key={i} style={{
+                    color: '#fbbf24',
+                    fontSize: '20px'
+                  }}>⭐</span>
                 ))}
               </div>
 
               {/* Quote */}
-              <blockquote className="text-gray-700 leading-relaxed mb-6 md:mb-8 text-sm md:text-base italic">
+              <blockquote style={{
+                color: '#374151',
+                lineHeight: '1.6',
+                marginBottom: '32px',
+                fontSize: '16px',
+                fontStyle: 'italic',
+                fontWeight: '400'
+              }}>
                 "{testimonial.quote}"
               </blockquote>
 
               {/* Client Info */}
-              <div className="flex items-center space-x-3 md:space-x-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl md:text-2xl">
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px'
+              }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  background: 'linear-gradient(to right, #6366f1, #8b5cf6)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '24px'
+                }}>
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900 text-sm md:text-base">{testimonial.name}</div>
-                  <div className="text-indigo-600 font-medium text-xs md:text-sm">{testimonial.role}</div>
-                  <div className="text-gray-500 text-xs md:text-sm">{testimonial.company}</div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    color: '#111827',
+                    fontSize: '16px',
+                    marginBottom: '2px'
+                  }}>{testimonial.name}</div>
+                  <div style={{
+                    color: '#6366f1',
+                    fontWeight: '500',
+                    fontSize: '14px',
+                    marginBottom: '2px'
+                  }}>{testimonial.role}</div>
+                  <div style={{
+                    color: '#6b7280',
+                    fontSize: '14px'
+                  }}>{testimonial.company}</div>
                 </div>
               </div>
 
               {/* Verified Badge */}
-              <div className="mt-4 md:mt-6 flex items-center justify-end">
-                <div className="flex items-center space-x-2 bg-green-50 border border-green-200 rounded-full px-3 py-1">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span className="text-green-700 text-xs font-medium">Verified Client</span>
+              <div style={{
+                marginTop: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: '#f0fdf4',
+                  border: '1px solid #bbf7d0',
+                  borderRadius: '50px',
+                  padding: '4px 12px'
+                }}>
+                  <div style={{
+                    width: '8px',
+                    height: '8px',
+                    backgroundColor: '#4ade80',
+                    borderRadius: '50%'
+                  }}></div>
+                  <span style={{
+                    color: '#15803d',
+                    fontSize: '12px',
+                    fontWeight: '500'
+                  }}>Verified Client</span>
                 </div>
               </div>
             </div>
@@ -90,18 +181,45 @@ export const Testimonials: React.FC = () => (
         </div>
 
         {/* Trust Indicators */}
-        <div className="mt-12 md:mt-16 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white text-center">
-          <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Trusted by 50+ Vernon Area Businesses</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <div style={{
+          marginTop: '64px',
+          background: 'linear-gradient(to right, rgb(4, 120, 87), rgb(15, 118, 110)',
+          borderRadius: '24px',
+          padding: '48px 32px',
+          color: 'white',
+          textAlign: 'center'
+        }}>
+          <h3 style={{
+            fontSize: '32px',
+            fontWeight: 'bold',
+            marginBottom: '32px',
+            color: 'white'
+          }}>Trusted by 20+ Businesses</h3>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '32px'
+          }} className="md:grid-cols-4">
             {[
-              { number: '50+', label: 'Protected Businesses' },
-              { number: '99.9%', label: 'Uptime Achieved' },
+              { number: '50+', label: 'Happy Clients' },
+              { number: '99.9%', label: 'Project Success' },
               { number: '24/7', label: 'Support Available' },
               { number: '5yr', label: 'Average Partnership' }
             ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.number}</div>
-                <div className="text-indigo-200 text-xs md:text-sm">{stat.label}</div>
+              <div key={index} style={{
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '36px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>{stat.number}</div>
+                <div style={{
+                  color: '#c7d2fe',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>{stat.label}</div>
               </div>
             ))}
           </div>

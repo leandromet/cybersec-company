@@ -7,18 +7,11 @@ export const Footer: React.FC = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Company Info */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">V</span>
-            </div>
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold">Vernon CyberSec</h3>
-              <p className="text-indigo-300 text-sm">Okanagan GeoTechSolutions</p>
-            </div>
-          </div>
           
+
           <p className="text-gray-300 leading-relaxed max-w-md">
-            Protecting small and medium businesses in Vernon, BC with enterprise-grade cybersecurity solutions and expert local support.
+            Protecting small and medium businesses in Vernon, BC with
+            enterprise-grade cybersecurity solutions and expert local support.
           </p>
 
           <div className="space-y-3">
@@ -26,19 +19,25 @@ export const Footer: React.FC = () => (
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <span className="text-sm">📍</span>
               </div>
-              <span className="text-gray-300 text-sm md:text-base">3200 32nd Ave, Vernon, BC V1T 2M8</span>
+              <span className="text-gray-300 text-sm md:text-base">
+                3200 32nd Ave, Vernon, BC V1T 2M8
+              </span>
             </div>
             <div className="flex items-center space-x-3 group hover:translate-x-1 transition-transform duration-300">
               <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-sm">📞</span>
               </div>
-              <span className="text-gray-300 text-sm md:text-base">+1 (250) CYBER-SEC</span>
+              <span className="text-gray-300 text-sm md:text-base">
+                +1 (250) CYBER-SEC
+              </span>
             </div>
             <div className="flex items-center space-x-3 group hover:translate-x-1 transition-transform duration-300">
               <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
                 <span className="text-sm">✉️</span>
               </div>
-              <span className="text-gray-300 text-sm md:text-base">contact@okanagantechgeo.ca</span>
+              <span className="text-gray-300 text-sm md:text-base">
+                contact@okanagantechgeo.ca
+              </span>
             </div>
           </div>
         </div>
@@ -51,14 +50,17 @@ export const Footer: React.FC = () => (
           </h4>
           <ul className="space-y-3">
             {[
-              'AI Threat Detection',
-              'Compliance Management', 
-              'Incident Response',
-              'Security Training',
-              'Vulnerability Assessment',
-              '24/7 Monitoring'
+              "AI Threat Detection",
+              "Compliance Management",
+              "Incident Response",
+              "Security Training",
+              "Vulnerability Assessment",
+              "24/7 Monitoring",
             ].map((service, index) => (
-              <li key={index} className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer text-sm md:text-base">
+              <li
+                key={index}
+                className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer text-sm md:text-base"
+              >
                 <span className="inline-block w-1 h-1 bg-gray-500 rounded-full mr-3"></span>
                 {service}
               </li>
@@ -74,14 +76,18 @@ export const Footer: React.FC = () => (
           </h4>
           <ul className="space-y-3">
             {[
-              { name: 'About Us', id: 'about' },
-              { name: 'Our Services', id: 'services' },
-              { name: 'Testimonials', id: 'testimonials' },
-              { name: 'Contact Us', id: 'contact' }
+              { name: "About Us", id: "about" },
+              { name: "Our Services", id: "services" },
+              { name: "Testimonials", id: "testimonials" },
+              { name: "Contact Us", id: "contact" },
             ].map((link, index) => (
               <li key={index}>
-                <button 
-                  onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} 
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById(link.id)
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-gray-300 hover:text-white transition-colors duration-300 text-sm md:text-base group"
                 >
                   <span className="inline-block w-1 h-1 bg-gray-500 rounded-full mr-3 group-hover:bg-purple-400 transition-colors duration-300"></span>
@@ -90,7 +96,10 @@ export const Footer: React.FC = () => (
               </li>
             ))}
             <li>
-              <a href="/privacy" className="text-gray-300 hover:text-white transition-colors duration-300 text-sm md:text-base group">
+              <a
+                href="/privacy"
+                className="text-gray-300 hover:text-white transition-colors duration-300 text-sm md:text-base group"
+              >
                 <span className="inline-block w-1 h-1 bg-gray-500 rounded-full mr-3 group-hover:bg-purple-400 transition-colors duration-300"></span>
                 Privacy Policy
               </a>
@@ -105,16 +114,21 @@ export const Footer: React.FC = () => (
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 bg-green-900/30 border border-green-600/30 rounded-full px-4 py-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-green-300 text-xs md:text-sm font-medium">SECURE ENCRYPTED SITE</span>
+              <span className="text-green-300 text-xs md:text-sm font-medium">
+                SECURE ENCRYPTED SITE
+              </span>
             </div>
             <div className="flex items-center space-x-2 bg-blue-900/30 border border-blue-600/30 rounded-full px-4 py-2">
-              <span className="text-blue-300 text-xs md:text-sm font-medium">🛡️ SOC 2 COMPLIANT</span>
+              <span className="text-blue-300 text-xs md:text-sm font-medium">
+                🛡️ SOC 2 COMPLIANT
+              </span>
             </div>
           </div>
-          
+
           <div className="text-center md:text-right">
             <p className="text-gray-400 text-sm md:text-base">
-              &copy; {new Date().getFullYear()} Vernon CyberSec - Okanagan GeoTechSolutions
+              &copy; {new Date().getFullYear()} Vernon CyberSec - Okanagan
+              GeoTechSolutions
             </p>
             <p className="text-gray-500 text-xs md:text-sm mt-1">
               All rights reserved. Protecting BC businesses since 2020.
