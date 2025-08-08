@@ -124,56 +124,73 @@ export const Navbar: React.FC = () => {
         {/* End flex items-center justify-between */}
         </div>
 
-        {/* Enhanced Mobile Navigation */}
-        <div className={`md:lg:hidden transition-all duration-500 ease-out ${
-          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        } overflow-hidden`}>
-          <div className="bg-white/95 backdrop-blur-md rounded-xl m-2 sm:m-3 md:m-4 border border-neutral-200 shadow-2xl">
-            <div className="p-2 sm:p-3 md:p-4 space-y-1">
-              {[
-                { name: 'About Us', id: 'about', icon: '🛡️', desc: 'Learn about our mission' },
-                { name: 'Our Services', id: 'services', icon: '⚡', desc: 'Explore our solutions' },
-                { name: 'Testimonials', id: 'testimonials', icon: '⭐', desc: 'What clients say' },
-                { name: 'Contact', id: 'contact', icon: '💬', desc: 'Get in touch' }
-              ].map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`group w-full text-left p-3 sm:p-4 rounded-lg md:rounded-xl transition-all duration-300 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 text-black touch-manipulation min-h-[60px] sm:min-h-[70px]`}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <div className="flex-shrink-0">
-                      <span className="text-xl sm:text-2xl">{item.icon}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-black text-sm sm:text-base">
-                        {item.name}
+        {/* Mobile Dropdown Menu Overlay */}
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close mobile menu backdrop"
+            />
+            {/* Dropdown Menu */}
+            <div className="fixed top-14 left-0 w-full z-50 flex justify-center animate-fadeInDown">
+              <div className="bg-white/95 backdrop-blur-md rounded-xl m-2 sm:m-3 md:m-4 border border-neutral-200 shadow-2xl w-full max-w-sm mx-auto">
+                <div className="p-2 sm:p-3 md:p-4 space-y-1">
+                  {[
+                    { name: 'About Us', id: 'about', icon: '🛡️', desc: 'Learn about our mission' },
+                    { name: 'Our Services', id: 'services', icon: '⚡', desc: 'Explore our solutions' },
+                    { name: 'Testimonials', id: 'testimonials', icon: '⭐', desc: 'What clients say' },
+                    { name: 'Contact', id: 'contact', icon: '💬', desc: 'Get in touch' }
+                  ].map((item, index) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`group w-full text-left p-3 sm:p-4 rounded-lg md:rounded-xl transition-all duration-300 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 text-black touch-manipulation min-h-[60px] sm:min-h-[70px]`}
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <div className="flex items-center space-x-3 sm:space-x-4">
+                        <div className="flex-shrink-0">
+                          <span className="text-xl sm:text-2xl">{item.icon}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-black text-sm sm:text-base">
+                            {item.name}
+                          </div>
+                          <div className="text-xs sm:text-sm text-neutral-500 mt-0.5">
+                            {item.desc}
+                          </div>
+                        </div>
+                        <div className="flex-shrink-0">
+                          <span className="text-neutral-400 group-hover:text-indigo-600 transition-colors text-sm">→</span>
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-neutral-500 mt-0.5">
-                        {item.desc}
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <span className="text-neutral-400 group-hover:text-indigo-600 transition-colors text-sm">→</span>
-                    </div>
+                    </button>
+                  ))}
+                  {/* Mobile CTA - Enhanced */}
+                  <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-neutral-200">
+                    <button
+                      onClick={() => scrollToSection('contact')}
+                      className="w-full bg-indigo-600 text-white p-3 sm:p-4 rounded-lg md:rounded-xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg hover:bg-indigo-700 transition-all duration-300 hover:scale-[1.02] touch-manipulation min-h-[50px] sm:min-h-[60px]"
+                    >
+                      <span className="text-sm sm:text-base">Get Secured Now</span>
+                      <span className="text-base sm:text-lg">🚀</span>
+                    </button>
                   </div>
-                </button>
-              ))}
-              
-              {/* Mobile CTA - Enhanced */}
-              <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-neutral-200">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full bg-indigo-600 text-white p-3 sm:p-4 rounded-lg md:rounded-xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg hover:bg-indigo-700 transition-all duration-300 hover:scale-[1.02] touch-manipulation min-h-[50px] sm:min-h-[60px]"
-                >
-                  <span className="text-sm sm:text-base">Get Secured Now</span>
-                  <span className="text-base sm:text-lg">🚀</span>
-                </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+            <style jsx>{`
+              .animate-fadeInDown {
+                animation: fadeInDown 0.3s cubic-bezier(0.4,0,0.2,1);
+              }
+              @keyframes fadeInDown {
+                from { opacity: 0; transform: translateY(-24px); }
+                to { opacity: 1; transform: translateY(0); }
+              }
+            `}</style>
+          </>
+        )}
     </nav>
   );
 };

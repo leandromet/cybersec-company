@@ -29,9 +29,9 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <div>
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white p-4 md:p-6">
+        <div>
           <div className="flex justify-between items-center">
             <div>
               <h3 className="text-xl md:text-2xl font-bold">
@@ -43,9 +43,9 @@ const Modal: React.FC<ModalProps> = ({
             </div>
             <button
               onClick={onClose}
-              className="text-white hover:text-red-200 text-2xl md:text-3xl font-bold transition-colors duration-200"
+        
             >
-              ×
+              
             </button>
           </div>
         </div>
