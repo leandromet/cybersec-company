@@ -3,33 +3,33 @@ import React from "react";
 const testimonials = [
   {
     name: "Sarah Mitchell",
-    company: "Okanagan Retailers",
-    role: "IT Director",
-    quote: "Vernon CyberSec transformed our security posture completely. Their AI-driven threat detection caught several attacks that our previous system missed. The team is incredibly knowledgeable and responsive.",
+    company: "Okanagan Consulting",
+    role: "Operations Manager",
+    quote: "Okanagan GeoTech's GIS mapping solution transformed how we visualize our project data. The interactive maps they created help us communicate complex spatial information to our clients effectively.",
     rating: 5,
     avatar: "👩‍💼"
   },
   {
     name: "Michael Chen",
     company: "Vernon Farms Co-op",
-    role: "Operations Manager", 
-    quote: "Their incident response was phenomenal. When we had a potential breach, their team was on-site within 15 minutes and had everything contained quickly. Professional service that gives us peace of mind.",
+    role: "IT Director", 
+    quote: "Their IT security implementation was seamless. The team secured our entire network infrastructure and provided excellent training to our staff. We feel much more confident about our data security now.",
     rating: 5,
     avatar: "👨‍🌾"
   },
   {
     name: "David Rodriguez",
-    company: "Mountain View Clinic",
-    role: "Practice Administrator",
-    quote: "Compliance was a nightmare before we found Vernon CyberSec. They helped us achieve full PIPEDA compliance and our audit went perfectly. Can't recommend them enough!",
+    company: "Mountain View Properties",
+    role: "Business Manager",
+    quote: "The custom development work they did for our property management system exceeded expectations. The AI integration helps us automate routine tasks and the system is incredibly user-friendly.",
     rating: 5,
-    avatar: "👨‍⚕️"
+    avatar: "👨‍💼"
   },
   {
     name: "Lisa Thompson",
-    company: "Northern BC Law",
-    role: "Managing Partner",
-    quote: "The security training they provided to our staff was excellent. Everyone now understands cybersecurity best practices, and we've had zero security incidents since implementation.",
+    company: "Northern BC Analytics",
+    role: "Data Scientist",
+    quote: "Their expertise in spatial analysis and business intelligence helped us deliver insights we never thought possible. The team really understands both the technical and business sides of our challenges.",
     rating: 5,
     avatar: "👩‍💼"
   }
@@ -46,7 +46,7 @@ export const Testimonials: React.FC = () => (
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-            Don't just take our word for it - hear from the businesses we protect across Vernon and the Okanagan Valley
+            Hear from the businesses we've helped grow with our technology solutions across Vernon and the Okanagan Valley
           </p>
         </div>
 

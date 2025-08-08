@@ -7,11 +7,11 @@ export const About: React.FC = () => (
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight">
-            About Vernon CyberSec
+            About Okanagan GeoTech
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-            Protecting small and medium businesses in Vernon, BC with enterprise-grade cybersecurity solutions
+            Comprehensive technology solutions for businesses in Vernon, BC and the Okanagan Valley
           </p>
         </div>
 
@@ -21,26 +21,26 @@ export const About: React.FC = () => (
           <div className="space-y-6 md:space-y-8">
             <div className="space-y-4 md:space-y-6">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-                Your Local Cybersecurity Experts
+                Your Local Technology Partners
               </h3>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                Okanagan GeoTechSolutions is dedicated to protecting businesses in Vernon and the surrounding area. 
-                Our team of certified cybersecurity experts brings years of experience in threat detection, 
-                compliance management, and incident response.
+                Okanagan GeoTech Solutions specializes in GIS mapping, spatial analysis, IT security, AI integration, 
+                and custom development services. Our team combines technical expertise with local knowledge 
+                to deliver solutions that drive business growth.
               </p>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                We understand that every business is unique, which is why we offer tailored security solutions 
-                that grow with your company while staying within your budget.
+                From interactive mapping applications to comprehensive IT infrastructure, we provide scalable 
+                technology solutions tailored to your specific needs and budget.
               </p>
             </div>
 
             {/* Key Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               {[
-                { icon: '🛡️', title: 'Expert Protection', desc: 'Certified security professionals' },
-                { icon: '🌍', title: 'Local Support', desc: '24/7 support in Vernon, BC' },
-                { icon: '⚡', title: 'Rapid Response', desc: 'Immediate incident response' },
-                { icon: '💼', title: 'Business Focus', desc: 'SMB-tailored solutions' }
+                { icon: '�️', title: 'GIS Expertise', desc: 'Advanced mapping & spatial analysis' },
+                { icon: '🛡️', title: 'IT Security', desc: 'Comprehensive security solutions' },
+                { icon: '🤖', title: 'AI Integration', desc: 'Custom AI & automation tools' },
+                { icon: '�', title: 'Custom Development', desc: 'Tailored software solutions' }
               ].map((feature, index) => (
                 <div key={index} className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="text-2xl md:text-3xl mb-2 md:mb-3">{feature.icon}</div>

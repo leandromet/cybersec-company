@@ -26,7 +26,7 @@ export const Contact: React.FC = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     setIsSubmitting(false);
-    alert("🛡️ Security Protocol Initiated! Our cyber specialists will contact you within 24 hours.");
+    alert("✅ Message sent successfully! We'll contact you within 24 hours to discuss your project.");
     setFormData({
       name: '',
       email: '',
@@ -76,22 +76,22 @@ export const Contact: React.FC = () => {
           <div className="text-center mb-20">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-cyan-500/30 rounded-full px-6 py-3 mb-8">
               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <span className="text-cyan-300 font-medium text-sm tracking-wider uppercase">Secure Communication</span>
+              <span className="text-cyan-300 font-medium text-sm tracking-wider uppercase">Professional Contact</span>
               <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
             </div>
             
             <h2 className="text-4xl md:text-6xl font-black mb-6">
               <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-                Initialize Contact
+                Get in Touch
               </span>
               <br />
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Protocol
+                Today
               </span>
             </h2>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Deploy secure channels to connect with our cybersecurity specialists for advanced protection solutions
+              Connect with our technology specialists for GIS solutions, IT security, AI integration, and custom development services
             </p>
           </div>
 
@@ -102,7 +102,7 @@ export const Contact: React.FC = () => {
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500">
                 <div className="flex items-center space-x-3 mb-8">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 font-medium text-sm tracking-wider uppercase">Secure Form Active</span>
+                  <span className="text-green-400 font-medium text-sm tracking-wider uppercase">Contact Form</span>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -113,7 +113,7 @@ export const Contact: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Agent Identification" 
+                      placeholder="Full Name" 
                       required
                       className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-cyan-400 placeholder-gray-400 text-white ${
                         focusedField === 'name' ? 'border-cyan-400 shadow-lg shadow-cyan-400/25' : ''
@@ -131,7 +131,7 @@ export const Contact: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="Secure Communication Channel" 
+                      placeholder="Email Address" 
                       required
                       className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-purple-400 placeholder-gray-400 text-white ${
                         focusedField === 'email' ? 'border-purple-400 shadow-lg shadow-purple-400/25' : ''
@@ -149,7 +149,7 @@ export const Contact: React.FC = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      placeholder="Organization Code" 
+                      placeholder="Company Name" 
                       className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-blue-400 placeholder-gray-400 text-white ${
                         focusedField === 'company' ? 'border-blue-400 shadow-lg shadow-blue-400/25' : ''
                       }`}
@@ -166,7 +166,7 @@ export const Contact: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="Emergency Contact Frequency" 
+                      placeholder="Phone Number" 
                       className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-green-400 placeholder-gray-400 text-white ${
                         focusedField === 'phone' ? 'border-green-400 shadow-lg shadow-green-400/25' : ''
                       }`}
@@ -188,13 +188,15 @@ export const Contact: React.FC = () => {
                       onFocus={() => setFocusedField('service')}
                       onBlur={() => setFocusedField(null)}
                     >
-                      <option value="" className="bg-slate-800">Select Protection Protocol</option>
-                      <option value="ai-threat" className="bg-slate-800">AI Threat Detection</option>
-                      <option value="quantum-assessment" className="bg-slate-800">Quantum Vulnerability Assessment</option>
-                      <option value="neural-monitoring" className="bg-slate-800">Neural Network Monitoring</option>
-                      <option value="compliance-matrix" className="bg-slate-800">Regulatory Compliance Matrix</option>
-                      <option value="incident-response" className="bg-slate-800">Incident Response Protocol</option>
-                      <option value="cyber-training" className="bg-slate-800">Cyber Warfare Training</option>
+                      <option value="" className="bg-slate-800">Select Service of Interest</option>
+                      <option value="gis-mapping" className="bg-slate-800">GIS & Interactive Maps</option>
+                      <option value="geoprocessing" className="bg-slate-800">Geoprocessing & Spatial Analysis</option>
+                      <option value="it-security" className="bg-slate-800">IT Security & Management</option>
+                      <option value="ai-integration" className="bg-slate-800">AI API Integration</option>
+                      <option value="custom-development" className="bg-slate-800">Custom Development</option>
+                      <option value="cloud-solutions" className="bg-slate-800">Cloud Solutions</option>
+                      <option value="business-intelligence" className="bg-slate-800">Business Intelligence</option>
+                      <option value="consultation" className="bg-slate-800">General Consultation</option>
                     </select>
                     <div className="absolute right-4 top-4 text-orange-400 opacity-60">⚙️</div>
                   </div>
@@ -205,7 +207,7 @@ export const Contact: React.FC = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Threat Assessment Details & Security Requirements..."
+                      placeholder="Please describe your project requirements, technical needs, or questions..."
                       rows={4}
                       className={`w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-300 focus:outline-none focus:bg-white/10 focus:border-pink-400 placeholder-gray-400 text-white resize-none ${
                         focusedField === 'message' ? 'border-pink-400 shadow-lg shadow-pink-400/25' : ''
@@ -220,20 +222,76 @@ export const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative w-full overflow-hidden bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      overflow: 'hidden',
+                      background: 'linear-gradient(to right, #06b6d4, #8b5cf6)',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      padding: '16px',
+                      borderRadius: '16px',
+                      fontSize: '16px',
+                      transition: 'all 0.3s ease',
+                      border: 'none',
+                      cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                      opacity: isSubmitting ? 0.5 : 1,
+                      outline: 'none'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isSubmitting) {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.transform = 'scale(1.05)';
+                        target.style.boxShadow = '0 20px 40px rgba(6, 182, 212, 0.25)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSubmitting) {
+                        const target = e.target as HTMLButtonElement;
+                        target.style.transform = 'scale(1)';
+                        target.style.boxShadow = 'none';
+                      }
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative flex items-center justify-center space-x-3">
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to right, #8b5cf6, #06b6d4)',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease'
+                    }} className="hover:opacity-100"></div>
+                    <div style={{
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '12px'
+                    }}>
                       {isSubmitting ? (
                         <>
-                          <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                          <span>TRANSMITTING...</span>
+                          <div style={{
+                            width: '24px',
+                            height: '24px',
+                            border: '2px solid rgba(255, 255, 255, 0.3)',
+                            borderTop: '2px solid white',
+                            borderRadius: '50%',
+                            animation: 'spin 1s linear infinite'
+                          }}></div>
+                          <span>SENDING MESSAGE...</span>
                         </>
                       ) : (
                         <>
-                          <span>DEPLOY SECURE TRANSMISSION</span>
-                          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                            <span className="text-sm">🚀</span>
+                          <span>SEND MESSAGE</span>
+                          <div style={{
+                            width: '24px',
+                            height: '24px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                            <span style={{ fontSize: '14px' }}>�</span>
                           </div>
                         </>
                       )}
@@ -251,7 +309,7 @@ export const Contact: React.FC = () => {
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
                   <div className="flex items-center space-x-3 mb-6">
                     <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                    <span className="text-cyan-300 font-medium text-sm tracking-wider uppercase">Command Center</span>
+                    <span className="text-cyan-300 font-medium text-sm tracking-wider uppercase">Contact Information</span>
                   </div>
                   
                   <div className="space-y-6">
@@ -260,7 +318,7 @@ export const Contact: React.FC = () => {
                         <span className="text-xl">📍</span>
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Vernon Operations Base</div>
+                        <div className="text-white font-semibold">Vernon Office</div>
                         <div className="text-gray-400">British Columbia, Canada</div>
                       </div>
                     </div>
@@ -270,8 +328,8 @@ export const Contact: React.FC = () => {
                         <span className="text-xl">📱</span>
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Emergency Hotline</div>
-                        <div className="text-gray-400">+1 (250) CYBER-SEC</div>
+                        <div className="text-white font-semibold">Phone</div>
+                        <div className="text-gray-400">+1 (250) 555-TECH</div>
                       </div>
                     </div>
 
@@ -280,7 +338,7 @@ export const Contact: React.FC = () => {
                         <span className="text-xl">📧</span>
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Secure Communications</div>
+                        <div className="text-white font-semibold">Email</div>
                         <div className="text-gray-400">contact@okanagantechgeo.ca</div>
                       </div>
                     </div>
@@ -291,30 +349,31 @@ export const Contact: React.FC = () => {
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
                   <div className="flex items-center space-x-3 mb-6">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-green-300 font-medium text-sm tracking-wider uppercase">Response Matrix</span>
+                    <span className="text-green-300 font-medium text-sm tracking-wider uppercase">Response Times</span>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Emergency Response</span>
-                      <span className="text-green-400 font-bold">&lt; 15 min</span>
+                      <span className="text-gray-400">Project Consultation</span>
+                      <span className="text-green-400 font-bold">&lt; 4 hours</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">General Inquiries</span>
-                      <span className="text-cyan-400 font-bold">&lt; 4 hours</span>
+                      <span className="text-gray-400">Quote Requests</span>
+                      <span className="text-cyan-400 font-bold">&lt; 24 hours</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Assessment Reports</span>
-                      <span className="text-purple-400 font-bold">&lt; 24 hours</span>
+                      <span className="text-gray-400">Technical Support</span>
+                      <span className="text-purple-400 font-bold">&lt; 2 hours</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Security Badge */}
+                {/* Business Hours */}
                 <div className="bg-gradient-to-r from-cyan-500/10 to-purple-600/10 backdrop-blur-md border border-cyan-500/30 rounded-3xl p-8 text-center">
-                  <div className="text-6xl mb-4">🛡️</div>
-                  <div className="text-xl font-bold text-white mb-2">Quantum-Secured Communications</div>
-                  <div className="text-gray-300 text-sm">All transmissions encrypted with military-grade protocols</div>
+                  <div className="text-4xl mb-4">�</div>
+                  <div className="text-xl font-bold text-white mb-2">Business Hours</div>
+                  <div className="text-gray-300 text-sm">Monday - Friday: 9:00 AM - 6:00 PM PST</div>
+                  <div className="text-gray-300 text-sm">Emergency support available 24/7</div>
                 </div>
               </div>
             </div>
